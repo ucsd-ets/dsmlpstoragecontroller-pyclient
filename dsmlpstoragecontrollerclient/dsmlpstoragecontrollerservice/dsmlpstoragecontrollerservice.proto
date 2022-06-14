@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package dsmlpstoragecontrollerservice;
+
+option go_package = "dsmlpstoragecontrollerservice/dsmlpstoragecontrollerservice";
+
+message Void {}
+
+message UserQuota {
+    string userused = 1;
+    string userquota = 2;
+}
+
+message GroupQuota {
+    string groupused = 1;
+    string groupquota = 2;
+}
+
+message GetPersonalQuotaRequest {
+    uint32 uid = 1;
+    string workspaceName = 2;
+}
+
+message GetPersonalQuotaResponse {
+    UserQuota quota = 1;
+}
+
+message SetPersonalQuotaRequest {
+    uint32 uid = 1;
+    string userquota = 2;
+    string workspaceName = 3;
+}
+
+message GetTeamQuotaRequest {
+    uint32 gid = 1;
+    string workspaceName = 2;
+}
+
+message GetTeamQuotaResponse {
+    GroupQuota quota = 1;
+}
+
+message SetTeamQuotaRequest {
+    uint32 gid = 1;
+    string groupquota = 2;
+    string workspaceName = 3;
+}
+
+message GetHomeQuotaRequest {
+    uint32 uid = 1;
+}
+
+message GetHomeQuotaResponse {
+    UserQuota quota = 1;
+}
+
+message SetHomeQuotaRequest {
+    uint32 uid = 1;
+    string userquota = 2;
+}
+
+message CreateWorkspaceRequest {
+    string name = 1;
+}
+
+message CreateHomeDirectoryRequest {
+    uint32 uid = 1;
+    string username = 2;
+}
+
+message HomeDirectory {
+    uint32 uid = 1;
+    string path = 2;
+    UserQuota quota = 3;
+}
+
+message ListHomeDirectoriesResponse {
+    repeated HomeDirectory homeDirectories = 1;
+}
+
+service DSMLPStorageControllerService {
+    rpc GetPersonalQuota(GetPersonalQuotaRequest) returns (GetPersonalQuotaResponse);
+    rpc SetPersonalQuota(SetPersonalQuotaRequest) returns (Void);
+    rpc GetTeamQuota(GetTeamQuotaRequest) returns (GetTeamQuotaResponse);
+    rpc SetTeamQuota(SetTeamQuotaRequest) returns (Void);
+    rpc GetHomeQuota(GetHomeQuotaRequest) returns (GetHomeQuotaResponse);
+    rpc SetHomeQuota(SetHomeQuotaRequest) returns (Void);
+    rpc CreateWorkspace(CreateWorkspaceRequest) returns (Void);
+    rpc CreateHomeDirectory(CreateHomeDirectoryRequest) returns (Void);
+    rpc ListHomeDirectories(Void) returns (ListHomeDirectoriesResponse);
+}
