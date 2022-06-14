@@ -2,6 +2,7 @@ from typing import Any
 from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
 import pytest
 
+
 @pytest.fixture
 def correct_config():
     return {
@@ -15,8 +16,9 @@ def correct_config():
         "cert": "example_cert_path",
         "port": 9000,
         "address": "localhost",
-        "developer_mode": True
+        "developer_mode": True,
     }
+
 
 @pytest.fixture
 def incorrect_type_config():
@@ -31,8 +33,9 @@ def incorrect_type_config():
         "cert": -1,
         "port": "9000",
         "address": -1,
-        "developmer_mode": True
+        "developmer_mode": True,
     }
+
 
 @pytest.fixture
 def incorrect_value_config():
@@ -47,22 +50,24 @@ def incorrect_value_config():
         "cert": "",
         "port": -1,
         "address": "",
-        "developer_mode": True
+        "developer_mode": True,
     }
+
 
 def test_correct_config(correct_config):
     config_kwargs: dict[str, Any] = correct_config
     client_config = ClientConfig(**config_kwargs)
 
+
 def test_incorrect_type_config(incorrect_type_config):
     config_kwargs: dict[str, Any] = incorrect_type_config
     exeception_occurred = False
-    
+
     try:
         client_config = ClientConfig(**config_kwargs)
     except TypeError:
         exeception_occurred = True
-    
+
     assert exeception_occurred
 
 
@@ -74,5 +79,5 @@ def test_incorrect_value_config(incorrect_value_config):
         client_config = ClientConfig(**config_kwargs)
     except ValueError:
         exeception_occurred = True
-    
+
     assert exeception_occurred

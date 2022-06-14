@@ -28,14 +28,16 @@ class Client:
     @property
     def config(self) -> str:
         return self.__config
-    
+
     @config.setter
     def config(self, config: ClientConfig):
         self.__validate_config(config)
         self.__config = config
 
     def __enter__(self):
-        self.__channel = secure_channel(f"{self.config.address}:{self.config.port}", self.config.creds)
+        self.__channel = secure_channel(
+            f"{self.config.address}:{self.config.port}", self.config.creds
+        )
 
         try:
             self.__stub = DSMLPStorageControllerServiceStub(self.__channel)
@@ -68,7 +70,9 @@ class Client:
             The personal quota.
         """
         try:
-            get_personal_quota_request = pb2.GetPersonalQuotaRequest(self.config.uid, self.config.workspace)
+            get_personal_quota_request = pb2.GetPersonalQuotaRequest(
+                self.config.uid, self.config.workspace
+            )
         except Exception:
             print("failed to create GetPersonalQuotaRequest")
             raise
@@ -106,7 +110,9 @@ class Client:
             The groupquota of the team.
         """
         try:
-            get_team_quota_request = pb2.GetTeamQuotaRequest(self.config.gid, self.config.workspace)
+            get_team_quota_request = pb2.GetTeamQuotaRequest(
+                self.config.gid, self.config.workspace
+            )
         except Exception:
             print("failed to create GetTeamQuotaRequest")
             raise
@@ -120,7 +126,9 @@ class Client:
     def set_team_quota(self):
         """Set team quota in DSMLPStorageController."""
         try:
-            set_team_quota_request = pb2.SetTeamQuotaRequest(self.config.gid, self.config.groupquota, self.config.workspace)
+            set_team_quota_request = pb2.SetTeamQuotaRequest(
+                self.config.gid, self.config.groupquota, self.config.workspace
+            )
         except Exception:
             print("failed to create SetTeamQuotaRequest")
             raise
@@ -152,7 +160,9 @@ class Client:
     def set_home_quota(self):
         """Set home quota in DSMLPStorageController."""
         try:
-            set_home_quota_request = pb2.SetHomeQuotaRequest(self.config.uid, self.config.userquota)
+            set_home_quota_request = pb2.SetHomeQuotaRequest(
+                self.config.uid, self.config.userquota
+            )
         except Exception:
             print("failed to create SetHomeQuotaRequest")
             raise

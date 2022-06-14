@@ -1,5 +1,3 @@
-
-
 from grpc import ChannelCredentials, ssl_channel_credentials
 
 
@@ -18,14 +16,28 @@ class ClientConfig:
         address: The address used for communicating with the DSMLP Storage Controller gRPC Service.
         developer_mode: Whether or not the client is in developer mode.
     """
-    def __init__(self, uid: int, userquota: str, gid: int, groupquota: str, workspace: str, ca: str, key: str, cert: str, port: int, address: str = "localhost", developer_mode=False):
+
+    def __init__(
+        self,
+        uid: int,
+        userquota: str,
+        gid: int,
+        groupquota: str,
+        workspace: str,
+        ca: str,
+        key: str,
+        cert: str,
+        port: int,
+        address: str = "localhost",
+        developer_mode=False,
+    ):
         self.uid: int = uid
         self.userquota: str = userquota
 
         self.gid: int = gid
         self.groupquota: str = groupquota
         self.workspace: str = workspace
-        
+
         self.ca: str = ca
         self.key: str = key
         self.cert: str = cert
@@ -41,7 +53,7 @@ class ClientConfig:
     @property
     def ca(self) -> str:
         return self.__ca
-    
+
     @ca.setter
     def ca(self, ca: str):
         self.__validate_str(ca, "ca")
@@ -50,7 +62,7 @@ class ClientConfig:
     @property
     def key(self) -> str:
         return self.__key
-    
+
     @key.setter
     def key(self, key: str):
         self.__validate_str(key, "key")
@@ -59,16 +71,16 @@ class ClientConfig:
     @property
     def cert(self) -> str:
         return self.__cert
-    
+
     @cert.setter
     def cert(self, cert: str):
         self.__validate_str(cert, "cert")
         self.__cert = cert
-    
+
     @property
     def port(self) -> int:
         return self.__port
-    
+
     @port.setter
     def port(self, port: int):
         if not isinstance(port, int):
@@ -76,11 +88,11 @@ class ClientConfig:
         if port < 0:
             raise ValueError("'port' must be greater than or equal to 0")
         self.__port = port
-    
+
     @property
     def address(self) -> str:
         return self.__address
-    
+
     @address.setter
     def address(self, address: str):
         self.__validate_str(address, "address")
@@ -89,34 +101,34 @@ class ClientConfig:
     @property
     def uid(self) -> int:
         return self.__uid
-    
+
     @uid.setter
     def uid(self, uid: int):
         self.__validate_uid_or_gid(uid, "uid")
         self.__uid = uid
-    
+
     @property
     def gid(self) -> int:
         return self.__gid
-    
+
     @gid.setter
     def gid(self, gid: int):
         self.__validate_uid_or_gid(gid, "gid")
         self.__gid = gid
-    
+
     @property
     def workspace(self) -> str:
         return self.__workspace
-    
+
     @workspace.setter
     def workspace(self, workspace: str):
         self.__validate_str(workspace, "workspace")
         self.__workspace = workspace
-    
+
     @property
     def userquota(self) -> str:
         return self.__userquota
-    
+
     @userquota.setter
     def userquota(self, userquota: str):
         self.__validate_str(userquota, "userquota")
@@ -125,16 +137,16 @@ class ClientConfig:
     @property
     def groupquota(self) -> str:
         return self.__groupquota
-    
+
     @userquota.setter
     def groupquota(self, groupquota: str):
         self.__validate_str(groupquota, "groupquota")
         self.__groupquota = groupquota
-    
+
     @property
     def creds(self) -> str:
         return self.__creds
-    
+
     @creds.setter
     def creds(self, creds: ChannelCredentials):
         if not isinstance(creds, ChannelCredentials):
@@ -144,13 +156,13 @@ class ClientConfig:
     @property
     def developer_mode(self) -> bool:
         return self.__developer_mode
-    
+
     @developer_mode.setter
     def developer_mode(self, developer_mode: bool):
         if not isinstance(developer_mode, bool):
             raise TypeError("'developer_mode' must be of type bool")
         self.__developer_mode = developer_mode
-    
+
     @staticmethod
     def __validate_str(arg: str, name: str):
         """Check if arg is of type str and is not an empty string.
@@ -165,7 +177,7 @@ class ClientConfig:
         """
         if not isinstance(name, str):
             raise TypeError(f"'name' argument must be of type str")
-        
+
         if len(name) == 0:
             raise ValueError(f"'name' argument must not be an empty string")
 
@@ -188,15 +200,17 @@ class ClientConfig:
         """
         if not isinstance(name, str):
             raise TypeError(f"'name' argument must be of type str")
-        
+
         if name != "uid" and name != "gid":
-            raise TypeError(f"'name' argument must have a value of either 'uid' or 'gid'")
+            raise TypeError(
+                f"'name' argument must have a value of either 'uid' or 'gid'"
+            )
 
         if not isinstance(id, int):
             raise TypeError(f"'{name}' must be of type int")
         if id < 0:
             raise ValueError(f"'{name}' must be greater than or equal to 0")
-    
+
     def create_channel_credentials(self) -> ChannelCredentials:
         """Retrieve gRPC SSL channel credentials.
         Args:
