@@ -66,6 +66,7 @@ class ClientArgsManager(ClientArgs):
         )
         parser.add_argument(self.Workspace.hyphenate(), help="name of workspace")
         parser.add_argument(self.Username.hyphenate(), help="username")
+        parser.add_argument(self.DeveloperMode.hyphenate(), help="developer mode")
         args = parser.parse_args()
         return args
 
@@ -316,3 +317,23 @@ class ClientArgsManager(ClientArgs):
         self.__validate_str(username)
 
         return username
+    
+    def in_developer_mode(self) -> bool:
+        """Check if client should be in developer mode from user input.
+
+        Returns:
+            Whether or not the client should be in developer mode.
+
+        Raises:
+            AttributeError: If developer_mode has not been found in the Namespace object.
+        """
+        try:
+            developer_mode: bool = getattr(self.__args, "developer_mode")
+        except AttributeError as e:
+            print(e)
+            exit("failed to parse developer_mode")
+
+        if not isinstance(developer_mode, bool):
+            raise TypeError("'developer_mode' must be of type bool")
+
+        return developer_mode

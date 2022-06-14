@@ -4,26 +4,35 @@ from os import getenv
 from dotenv import load_dotenv
 from dsmlpstoragecontrollerclient.client import Client
 from dsmlpstoragecontrollerclient.clientargsmanager import ClientArgsManager
+from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
 from dsmlpstoragecontrollerclient.clientrequestmethods import ClientRequestMethods
 
 if __name__ == "__main__":
     # Load environment variables from .env file
     load_dotenv()
-    CA = getenv("CA")
-    CERT = getenv("CERT")
-    KEY = getenv("KEY")
+    CA = getenv("DSMLP_STORAGE_CONTROLLER_CA")
+    CERT = getenv("DSMLP_STORAGE_CONTROLLER_CERT")
+    KEY = getenv("DSMLP_STORAGE_CONTROLLER_KEY")
 
     # Retrieve command line arguments using ClientArgsManager
     client_args_manager = ClientArgsManager(ca=CA, cert=CERT, key=KEY)
 
-    # Create client with Client
-    with Client(
-        ca=client_args_manager.ca,
-        key=client_args_manager.key,
-        cert=client_args_manager.cert,
-        port=client_args_manager.port,
-        address=client_args_manager.address,
-    ) as client:
+    # Create ClientConfig object
+    config = ClientConfig(
+        uid=client_args_manager.get_uid(),
+        userquota=client_args_manager.get_userquota(),
+        gid=client_args_manager.get_gid(),
+        groupquota=client_args_manager.get_groupquota(),
+        workspace=client_args_manager.get_workspace(),
+        ca=client_args_manager.get_ca(),
+        key=client_args_manager.get_key(),
+        cert=client_args_manager.get_cert(),
+        port=client_args_manager.get_port(),
+        address=client_args_manager.get_address(),
+        developer_mode=client_args_manager.in_developer_mode(),
+    )
+    # Create client with ClientConfig object
+    with Client(config) as client:
         request_method = client_args_manager.get_request_method()
         if request_method == ClientRequestMethods.GetPersonalQuota.value:
             personal_quota = client.get_personal_quota()

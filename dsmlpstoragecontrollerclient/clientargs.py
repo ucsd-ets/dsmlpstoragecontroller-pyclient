@@ -17,6 +17,7 @@ class ClientArgs(Enum):
     Groupquota = "groupquota"
     Workspace = "workspace"
     Username = "username"
+    DeveloperMode = "developerMode"
 
     def hyphenate(self) -> str:
         """Prepends '-' to value of enumeration.
