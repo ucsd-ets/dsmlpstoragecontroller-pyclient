@@ -4,39 +4,35 @@ from grpc import ChannelCredentials, ssl_channel_credentials
 class ClientConfig:
     """Config for DSMLP Storage Controller client
     Args:
-        uid: The user id.
-        userquota: The user quota.
-        gid: The group id.
-        groupquota: The group quota.
-        workspace: Name of the workspace.
         ca: The path of the CA file used for gRPC authentication.
         key: The path of the key file used for gRPC authentication.
         cert: The path of the cert file used for gRPC authentication.
         port: The port used for communicating with the DSMLP Storage Controller gRPC Service.
         address: The address used for communicating with the DSMLP Storage Controller gRPC Service.
         developer_mode: Whether or not the client is in developer mode.
+        uid: The user id.
+        userquota: The user quota.
+        username: The username.
+        gid: The group id.
+        groupquota: The group quota.
+        workspace: Name of the workspace.
     """
 
     def __init__(
         self,
-        uid: int,
-        userquota: str,
-        gid: int,
-        groupquota: str,
-        workspace: str,
         ca: str,
         key: str,
         cert: str,
         port: int,
         address: str = "localhost",
-        developer_mode=False,
+        developer_mode = False,
+        uid: int | None = None,
+        userquota: str | None = None,
+        username: str | None = None,
+        gid: int | None = None,
+        groupquota: str | None = None,
+        workspace: str | None = None,
     ):
-        self.uid: int = uid
-        self.userquota: str = userquota
-
-        self.gid: int = gid
-        self.groupquota: str = groupquota
-        self.workspace: str = workspace
 
         self.ca: str = ca
         self.key: str = key
@@ -44,6 +40,36 @@ class ClientConfig:
         self.port: str = port
         self.address: str = address
         self.developer_mode: bool = developer_mode
+
+        if uid is not None:
+            self.uid: int = uid
+        else:
+            self.__uid = None
+        
+        if userquota is not None:
+            self.userquota: str = userquota
+        else:
+            self.__userquota = None
+        
+        if username is not None:
+            self.username: str = username
+        else:
+            self.__username = None
+
+        if gid is not None:
+            self.gid: int = gid
+        else:
+            self.__gid = None
+        
+        if groupquota is not None:
+            self.groupquota: str = groupquota
+        else:
+            self.__groupquota = None
+        
+        if workspace is not None:
+            self.workspace: str = workspace
+        else:
+            self.__workspace = None
 
         if not self.developer_mode:
             self.creds: ChannelCredentials = self.create_channel_credentials()
@@ -90,7 +116,7 @@ class ClientConfig:
         self.__port = port
 
     @property
-    def address(self) -> str:
+    def address(self) -> str | None:
         return self.__address
 
     @address.setter
@@ -99,7 +125,7 @@ class ClientConfig:
         self.__address = address
 
     @property
-    def uid(self) -> int:
+    def uid(self) -> int | None:
         return self.__uid
 
     @uid.setter
@@ -108,25 +134,7 @@ class ClientConfig:
         self.__uid = uid
 
     @property
-    def gid(self) -> int:
-        return self.__gid
-
-    @gid.setter
-    def gid(self, gid: int):
-        self.__validate_uid_or_gid(gid, "gid")
-        self.__gid = gid
-
-    @property
-    def workspace(self) -> str:
-        return self.__workspace
-
-    @workspace.setter
-    def workspace(self, workspace: str):
-        self.__validate_str(workspace, "workspace")
-        self.__workspace = workspace
-
-    @property
-    def userquota(self) -> str:
+    def userquota(self) -> str | None:
         return self.__userquota
 
     @userquota.setter
@@ -135,16 +143,43 @@ class ClientConfig:
         self.__userquota = userquota
 
     @property
-    def groupquota(self) -> str:
+    def username(self) -> str | None:
+        return self.__username
+
+    @username.setter
+    def username(self, username: str):
+        self.__validate_str(username, "username")
+        self.__username = username
+
+    @property
+    def gid(self) -> int | None:
+        return self.__gid
+
+    @gid.setter
+    def gid(self, gid: int):
+        self.__validate_uid_or_gid(gid, "gid")
+        self.__gid = gid
+
+    @property
+    def workspace(self) -> str | None:
+        return self.__workspace
+
+    @workspace.setter
+    def workspace(self, workspace: str):
+        self.__validate_str(workspace, "workspace")
+        self.__workspace = workspace
+
+    @property
+    def groupquota(self) -> str | None:
         return self.__groupquota
 
-    @userquota.setter
+    @groupquota.setter
     def groupquota(self, groupquota: str):
         self.__validate_str(groupquota, "groupquota")
         self.__groupquota = groupquota
 
     @property
-    def creds(self) -> str:
+    def creds(self) -> str | None:
         return self.__creds
 
     @creds.setter

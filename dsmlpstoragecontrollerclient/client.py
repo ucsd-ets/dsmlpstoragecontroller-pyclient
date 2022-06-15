@@ -15,11 +15,7 @@ class Client:
     """The client for the DSMLPStorageController service.
 
     Args:
-        ca: The path of the cert file used for gRPC authentication.
-        key: The path of the key file used for gRPC authentication.
-        cert: The path of the cert file used for gRPC authentication.
-        port: The port of the DSMLPStorageController service.
-        address: The address of the DSMLPStorageController service.
+        config: The configuration for the client.
     """
 
     def __init__(self, config: ClientConfig):
