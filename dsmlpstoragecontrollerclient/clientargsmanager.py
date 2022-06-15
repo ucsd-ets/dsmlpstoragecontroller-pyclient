@@ -2,6 +2,7 @@ from argparse import ArgumentParser, Namespace
 from sys import exit
 
 from dsmlpstoragecontrollerclient.clientargs import ClientArgs
+from dsmlpstoragecontrollerclient.validators import validate_str
 
 
 class ClientArgsManager(ClientArgs):
@@ -23,9 +24,9 @@ class ClientArgsManager(ClientArgs):
         Returns:
             Command line arguments.
         """
-        self.__validate_str(ca)
-        self.__validate_str(cert)
-        self.__validate_str(key)
+        validate_str(ca)
+        validate_str(cert)
+        validate_str(key)
 
         parser = ArgumentParser()
         parser.add_argument(
@@ -103,7 +104,7 @@ class ClientArgsManager(ClientArgs):
             print(e)
             exit("failed to parse request method name")
 
-        self.__validate_str(request_method)
+        validate_str(request_method)
 
         return request_method
 
@@ -115,7 +116,7 @@ class ClientArgsManager(ClientArgs):
         """
         address: str = getattr(self.__args, "address", "localhost")
 
-        self.__validate_str(address)
+        validate_str(address)
 
         return address
 
@@ -149,7 +150,7 @@ class ClientArgsManager(ClientArgs):
             print(e)
             raise
 
-        self.__validate_str(ca)
+        validate_str(ca)
 
         return ca
 
@@ -165,7 +166,7 @@ class ClientArgsManager(ClientArgs):
             print(e)
             raise
 
-        self.__validate_str(cert)
+        validate_str(cert)
 
         return cert
 
@@ -181,7 +182,7 @@ class ClientArgsManager(ClientArgs):
             print(e)
             raise
 
-        self.__validate_str(key)
+        validate_str(key)
 
         return key
 
@@ -260,7 +261,7 @@ class ClientArgsManager(ClientArgs):
             print(e)
             exit("failed to parse userquota")
 
-        self.__validate_str(userquota)
+        validate_str(userquota)
 
         return userquota
 
@@ -279,7 +280,7 @@ class ClientArgsManager(ClientArgs):
             print(e)
             exit("failed to parse groupquota")
 
-        self.__validate_str(groupquota)
+        validate_str(groupquota)
 
         return groupquota
 
@@ -298,7 +299,7 @@ class ClientArgsManager(ClientArgs):
             print(e)
             exit("failed to parse workspace name")
 
-        self.__validate_str(workspace)
+        validate_str(workspace)
 
         return workspace
 
@@ -317,10 +318,10 @@ class ClientArgsManager(ClientArgs):
             print(e)
             exit("failed to parse username")
 
-        self.__validate_str(username)
+        validate_str(username)
 
         return username
-    
+
     def in_developer_mode(self) -> bool:
         """Check if client should be in developer mode from user input.
 

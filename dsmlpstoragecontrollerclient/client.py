@@ -1,12 +1,13 @@
 from typing import List
 
 from grpc import secure_channel
+from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
 
 import dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice.dsmlpstoragecontrollerservice_pb2 as pb2
-from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
 from dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice.dsmlpstoragecontrollerservice_pb2_grpc import (
     DSMLPStorageControllerServiceStub,
 )
+from dsmlpstoragecontrollerclient.validators import validate_config
 
 
 class Client:
@@ -20,7 +21,7 @@ class Client:
         self.config = config
 
     @property
-    def config(self) -> str:
+    def config(self) -> ClientConfig:
         return self.__config
 
     @config.setter
@@ -30,7 +31,8 @@ class Client:
 
     def __enter__(self):
         self.__channel = secure_channel(
-            f"{self.config.address}:{self.config.port}", self.config.creds
+            f"{self.config.connection_config.address}:{self.config.connection_config.port}",
+            self.config.connection_config.creds,
         )
 
         try:
