@@ -6,6 +6,7 @@ from dsmlpstoragecontrollerclient.client import Client
 from dsmlpstoragecontrollerclient.clientargsmanager import ClientArgsManager
 from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
 from dsmlpstoragecontrollerclient.clientrequestmethods import ClientRequestMethods
+from dsmlpstoragecontrollerclient.connectionconfig import ConnectionConfig
 
 if __name__ == "__main__":
     # Load environment variables from .env file
@@ -19,17 +20,19 @@ if __name__ == "__main__":
 
     # Create ClientConfig object
     config = ClientConfig(
+        connection_config=ConnectionConfig(
+            ca=client_args_manager.get_ca(),
+            key=client_args_manager.get_key(),
+            cert=client_args_manager.get_cert(),
+            port=client_args_manager.get_port(),
+            address=client_args_manager.get_address()
+        ),
+        developer_mode=client_args_manager.in_developer_mode(),
         uid=client_args_manager.get_uid(),
         userquota=client_args_manager.get_userquota(),
         gid=client_args_manager.get_gid(),
         groupquota=client_args_manager.get_groupquota(),
-        workspace=client_args_manager.get_workspace(),
-        ca=client_args_manager.get_ca(),
-        key=client_args_manager.get_key(),
-        cert=client_args_manager.get_cert(),
-        port=client_args_manager.get_port(),
-        address=client_args_manager.get_address(),
-        developer_mode=client_args_manager.in_developer_mode(),
+        workspace=client_args_manager.get_workspace()
     )
     # Create client with ClientConfig object
     with Client(config) as client:
