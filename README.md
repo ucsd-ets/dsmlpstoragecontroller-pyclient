@@ -2,26 +2,30 @@
 
 ## Description
 
-This repository is for the Python client of the DSMLP Storage Controller gRPC Service. The name of the Python package is `dsmlpstoragecontrollerclient`. Please refer to `client_example.py` in the examples directory.
+This repository is for the Python client of the DSMLP Storage Controller gRPC Service. The name of the Python package is `dsmlpstoragecontrollerclient`. For more information, please refer to the [example](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/114e892aa5c41560ca49016f4bdef30332e84d57/examples/client_example.py) located in the 'examples' directory.
 
-## ClientConfig
+## Required for Client Operations
 
-The `ClientConfig` class
+### ClientConfig
 
-## Client
+The `ClientConfig` class stores the configuration data that is used by the `Client` class.
+
+### Client
 
 The `Client` class provides the available gRPC functions for communicating with the server. It must be used as a context manager (`with` statement is required).
 
-## ClientArgs
+## Optional: For Command Line Operations
 
-The `ClientArgs` class contains the 
+### ClientArgs
 
-## ClientArgsManager
+The `ClientArgs` class contains command line argument options for `ClientArgsManager`.
+
+### ClientArgsManager
 
 The `ClientArgsManager` class is used for parsing command line arguments, which can then be passed as arguments to the client.
 
-## Environment Variables Configuration
-1. Create a `.env` file in the `dsmlpstoragecontrollerclient` directory.
+### Environment Variables Configuration
+1. Create a '.env' file in the 'dsmlpstoragecontrollerclient' directory.
 2. Specify the following environment variables in the '.env' file:
     - DSMLP_STORAGE_CONTROLLER_PORT: the port for communicating with the gRPC service
     - DSMLP_STORAGE_CONTROLLER_ADDRESS: the address for communicating with the gRPC service

@@ -32,17 +32,14 @@ class ClientArgsManager(ClientArgs):
             self.Request.hyphenate(), help="gRPC service request method name"
         )
         parser.add_argument(
-            self.Address.hyphenate(),
-            default=9000,
-            help="Address for communicating with the gRPC service",
-        )
-        parser.add_argument(
-            self.Port.hyphenate(), default=9000, help="Client port number"
-        )
-        parser.add_argument(
             self.CA.hyphenate(),
             default=ca,
             help="CA certificate file absolute path",
+        )
+        parser.add_argument(
+            self.Key.hyphenate(),
+            default=key,
+            help="TLS key file absolute path",
         )
         parser.add_argument(
             self.Cert.hyphenate(),
@@ -50,23 +47,29 @@ class ClientArgsManager(ClientArgs):
             help="TLS certificate file absolute path",
         )
         parser.add_argument(
-            self.Key.hyphenate(),
-            default=key,
-            help="TLS key file absolute path",
+            self.Port.hyphenate(), default=9000, help="Client port number"
         )
+        parser.add_argument(
+            self.Address.hyphenate(),
+            default=9000,
+            help="Address for communicating with the gRPC service",
+        )
+        parser.add_argument(self.DeveloperMode.hyphenate(), help="developer mode")
+
         parser.add_argument(self.Uid.hyphenate(), help="user uid")
-        parser.add_argument(self.Gid.hyphenate(), help="group gid")
         parser.add_argument(
             self.Userquota.hyphenate(),
             help='user quota in the format of "-userquota=25G"',
         )
+        parser.add_argument(self.Username.hyphenate(), help="username")
+
+        parser.add_argument(self.Gid.hyphenate(), help="group gid")
         parser.add_argument(
             self.Groupquota.hyphenate(),
             help='group quota in the format of "-groupquota=25G"',
         )
         parser.add_argument(self.Workspace.hyphenate(), help="name of workspace")
-        parser.add_argument(self.Username.hyphenate(), help="username")
-        parser.add_argument(self.DeveloperMode.hyphenate(), help="developer mode")
+
         args = parser.parse_args()
         return args
 

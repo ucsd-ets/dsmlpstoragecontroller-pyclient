@@ -1,14 +1,12 @@
-from sys import exit
 from typing import List
 
 from grpc import secure_channel
 
 import dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice.dsmlpstoragecontrollerservice_pb2 as pb2
+from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
 from dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice.dsmlpstoragecontrollerservice_pb2_grpc import (
     DSMLPStorageControllerServiceStub,
 )
-
-from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
 
 
 class Client:
@@ -37,9 +35,9 @@ class Client:
 
         try:
             self.__stub = DSMLPStorageControllerServiceStub(self.__channel)
-        except Exception as e:
-            print(e)
-            exit("failed to create stub for channel")
+        except Exception:
+            print("failed to create stub for channel")
+            raise
 
         return self
 
