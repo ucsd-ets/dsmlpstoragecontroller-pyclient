@@ -2,11 +2,11 @@
 
 from os import getenv
 from dotenv import load_dotenv
-from dsmlpstoragecontrollerclient.client import Client
-from dsmlpstoragecontrollerclient.clientargsmanager import ClientArgsManager
-from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
-from dsmlpstoragecontrollerclient.clientrequestmethods import ClientRequestMethods
-from dsmlpstoragecontrollerclient.connectionconfig import ConnectionConfig
+from client import Client
+from clientargsmanager import ClientArgsManager
+from clientconfig import ClientConfig
+from clientrequestmethods import ClientRequestMethods
+from connectionconfig import ConnectionConfig
 
 if __name__ == "__main__":
     # Load environment variables from .env file
@@ -26,53 +26,46 @@ if __name__ == "__main__":
             cert=client_args_manager.get_cert(),
             port=client_args_manager.get_port(),
             address=client_args_manager.get_address()
-        ),
-        developer_mode=client_args_manager.in_developer_mode(),
-        uid=client_args_manager.get_uid(),
-        userquota=client_args_manager.get_userquota(),
-        gid=client_args_manager.get_gid(),
-        groupquota=client_args_manager.get_groupquota(),
-        workspace=client_args_manager.get_workspace()
+        )
     )
     # Create client with ClientConfig object
     with Client(config) as client:
         request_method = client_args_manager.get_request_method()
         if request_method == ClientRequestMethods.GetPersonalQuota.value:
+            config.uid = client_args_manager.get_uid()
+            config.workspace_name = client_args_manager.get_workspace_name()
             personal_quota = client.get_personal_quota()
             print(personal_quota)
         elif request_method == ClientRequestMethods.SetPersonalQuota.value:
-            client.set_personal_quota(
-                uid=client_args_manager.get_uid(),
-                userquota=client_args_manager.get_userquota(),
-                workspace=client_args_manager.get_workspace(),
-            )
+            config.uid = client_args_manager.get_uid()
+            config.userquota = client_args_manager.get_userquota()
+            config.workspace_name= client_args_manager.get_workspace_name()
+            client.set_personal_quota()
         elif request_method == ClientRequestMethods.GetTeamQuota.value:
-            team_quota = client.get_team_quota(
-                gid=client_args_manager.get_gid(),
-                workspace=client_args_manager.get_workspace(),
-            )
+            config.gid = client_args_manager.get_gid()
+            config.workspace_name= client_args_manager.get_workspace_name()
+            team_quota = client.get_team_quota()
             print(team_quota)
         elif request_method == ClientRequestMethods.SetTeamQuota.value:
-            client.set_team_quota(
-                gid=client_args_manager.get_gid(),
-                groupquota=client_args_manager.get_groupquota(),
-                workspace=client_args_manager.get_workspace(),
-            )
+            config.gid = client_args_manager.get_gid()
+            config.groupquota = client_args_manager.get_groupquota()
+            config.workspace_name= client_args_manager.get_workspace_name()
+            client.set_team_quota()
         elif request_method == ClientRequestMethods.GetHomeQuota.value:
-            home_quota = client.get_home_quota(uid=client_args_manager.get_uid())
+            config.uid = client_args_manager.get_uid()
+            home_quota = client.get_home_quota()
             print(home_quota)
         elif request_method == ClientRequestMethods.SetHomeQuota.value:
-            client.set_home_quota(
-                uid=client_args_manager.get_uid(),
-                userquota=client_args_manager.get_userquota(),
-            )
+            config.uid = client_args_manager.get_uid()
+            config.userquota = client_args_manager.get_userquota()
+            client.set_home_quota()
         elif request_method == ClientRequestMethods.CreateWorkspace.value:
-            client.create_workspace(workspace=client_args_manager.get_workspace())
+            config.workspace_name= client_args_manager.get_workspace_name()
+            client.create_workspace()
         elif request_method == ClientRequestMethods.CreateHomeDirectory.value:
-            client.create_home_directory(
-                uid=client_args_manager.get_uid(),
-                username=client_args_manager.get_username(),
-            )
+            config.uid = client_args_manager.get_uid()
+            config.username = client_args_manager.get_username()
+            client.create_home_directory()
         elif request_method == ClientRequestMethods.ListHomeDirectories.value:
             home_directories = client.get_list_of_home_directories()
             print(home_directories)

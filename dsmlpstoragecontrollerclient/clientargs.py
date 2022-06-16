@@ -10,14 +10,13 @@ class ClientArgs(Enum):
     Cert = "cert"
     Port = "port"
     Address = "address"
-    DeveloperMode = "developerMode"
 
     Uid = "uid"
     Userquota = "userquota"
     Username = "username"
     Gid = "gid"
     Groupquota = "groupquota"
-    Workspace = "workspace"
+    WorkspaceName = "workspace_name"
 
     def hyphenate(self) -> str:
         """Prepends '-' to value of enumeration.

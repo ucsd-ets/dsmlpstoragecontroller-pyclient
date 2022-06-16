@@ -1,5 +1,4 @@
 from grpc import ChannelCredentials, ssl_channel_credentials
-from dsmlpstoragecontrollerclient.validators import validate_str
 
 
 class ConnectionConfig:
@@ -28,7 +27,6 @@ class ConnectionConfig:
 
     @ca.setter
     def ca(self, ca: str):
-        validate_str(ca, "ca")
         self.__ca = ca
 
     @property
@@ -37,7 +35,6 @@ class ConnectionConfig:
 
     @key.setter
     def key(self, key: str):
-        validate_str(key, "key")
         self.__key = key
 
     @property
@@ -46,7 +43,6 @@ class ConnectionConfig:
 
     @cert.setter
     def cert(self, cert: str):
-        validate_str(cert, "cert")
         self.__cert = cert
 
     @property
@@ -62,16 +58,15 @@ class ConnectionConfig:
         self.__port = port
 
     @property
-    def address(self) -> str | None:
+    def address(self) -> str:
         return self.__address
 
     @address.setter
     def address(self, address: str):
-        validate_str(address, "address")
         self.__address = address
 
     @property
-    def creds(self) -> ChannelCredentials | None:
+    def creds(self) -> ChannelCredentials:
         return self.__creds
 
     @creds.setter

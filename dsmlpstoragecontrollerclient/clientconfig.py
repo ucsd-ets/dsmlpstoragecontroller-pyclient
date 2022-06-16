@@ -1,35 +1,29 @@
-from dsmlpstoragecontrollerclient.connectionconfig import ConnectionConfig
-
-from dsmlpstoragecontrollerclient.validators import validate_str, validate_uid_or_gid
-
+from connectionconfig import ConnectionConfig
 
 class ClientConfig:
     """Config for DSMLP Storage Controller client
     Args:
         connection_config: The connection config for the DSMLP Storage Controller gRPC Service.
-        developer_mode: Whether or not the client is in developer mode.
         uid: The user id.
         userquota: The user quota.
         username: The username.
         gid: The group id.
         groupquota: The group quota.
-        workspace: Name of the workspace.
+        workspace_name: Name of the workspace.
     """
 
     def __init__(
         self,
         connection_config: ConnectionConfig,
-        developer_mode=False,
-        uid: int | None = None,
-        userquota: str | None = None,
-        username: str | None = None,
-        gid: int | None = None,
-        groupquota: str | None = None,
-        workspace: str | None = None,
+        uid: int = None,
+        userquota: str = None,
+        username: str = None,
+        gid: int = None,
+        groupquota: str = None,
+        workspace_name: str = None,
     ):
 
         self.connection_config: ConnectionConfig = connection_config
-        self.developer_mode: bool = developer_mode
 
         if uid is not None:
             self.uid: int = uid
@@ -56,15 +50,14 @@ class ClientConfig:
         else:
             self.__groupquota = None
 
-        if workspace is not None:
-            self.workspace: str = workspace
+        if workspace_name is not None:
+            self.workspace_name: str = workspace_name
         else:
-            self.__workspace = None
+            self.__workspace_name = None
 
-        if not self.developer_mode:
-            self.connection_config.creds = (
-                self.connection_config.create_channel_credentials()
-            )
+        self.connection_config.creds = (
+            self.connection_config.create_channel_credentials()
+        )
 
     @property
     def connection_config(self) -> ConnectionConfig:
@@ -76,68 +69,52 @@ class ClientConfig:
         self.__connection_config = connection_config
 
     @property
-    def uid(self) -> int | None:
+    def uid(self) -> int:
         return self.__uid
 
     @uid.setter
     def uid(self, uid: int):
-        validate_uid_or_gid(uid, "uid")
         self.__uid = uid
 
     @property
-    def userquota(self) -> str | None:
+    def userquota(self) -> str:
         return self.__userquota
 
     @userquota.setter
     def userquota(self, userquota: str):
-        validate_str(userquota, "userquota")
         self.__userquota = userquota
 
     @property
-    def username(self) -> str | None:
+    def username(self) -> str:
         return self.__username
 
     @username.setter
     def username(self, username: str):
-        validate_str(username, "username")
         self.__username = username
 
     @property
-    def gid(self) -> int | None:
+    def gid(self) -> int:
         return self.__gid
 
     @gid.setter
     def gid(self, gid: int):
-        validate_uid_or_gid(gid, "gid")
         self.__gid = gid
 
     @property
-    def workspace(self) -> str | None:
-        return self.__workspace
+    def workspace_name(self) -> str:
+        return self.__workspace_name
 
-    @workspace.setter
-    def workspace(self, workspace: str):
-        validate_str(workspace, "workspace")
-        self.__workspace = workspace
+    @workspace_name.setter
+    def workspace_name(self, workspace_name: str):
+        self.__workspace_name = workspace_name
 
     @property
-    def groupquota(self) -> str | None:
+    def groupquota(self) -> str:
         return self.__groupquota
 
     @groupquota.setter
     def groupquota(self, groupquota: str):
-        validate_str(groupquota, "groupquota")
         self.__groupquota = groupquota
-
-    @property
-    def developer_mode(self) -> bool:
-        return self.__developer_mode
-
-    @developer_mode.setter
-    def developer_mode(self, developer_mode: bool):
-        if not isinstance(developer_mode, bool):
-            raise TypeError("'developer_mode' must be of type bool")
-        self.__developer_mode = developer_mode
 
     @staticmethod
     def __validate_connection_config(connection_config: ConnectionConfig):
