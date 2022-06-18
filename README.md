@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository is for the Python client of the DSMLP Storage Controller gRPC Service. The name of the Python package is `dsmlpstoragecontrollerclient`. For more information, please refer to the provided [example](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/dsmlpstoragecontrollerclient/example.py).
+This repository is for the Python client of the DSMLP Storage Controller gRPC Service. The name of the Python package is `dsmlpstoragecontrollerclient`. For more information, please refer to the provided [example](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/examples/clientargs-manager-example.py).
 
 ## Required for Client Operations
 
