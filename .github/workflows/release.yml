@@ -1,4 +1,4 @@
-name: Build dsmlpstoragecontrollerclient Python package
+name: Create release for dsmlpstoragecontrollerclient Python package
 
 on:
   push:
