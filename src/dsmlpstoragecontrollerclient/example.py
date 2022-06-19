@@ -2,11 +2,11 @@
 
 from os import getenv
 from dotenv import load_dotenv
-from dsmlpstoragecontrollerclient.client import Client
-from dsmlpstoragecontrollerclient.clientargsmanager import ClientArgsManager
-from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
-from dsmlpstoragecontrollerclient.clientrequestmethods import ClientRequestMethods
-from dsmlpstoragecontrollerclient.connectionconfig import ConnectionConfig
+from client import Client
+from clientargsmanager import ClientArgsManager
+from clientconfig import ClientConfig
+from clientrequestmethods import ClientRequestMethods
+from connectionconfig import ConnectionConfig
 
 if __name__ == "__main__":
     # Load environment variables from .env file

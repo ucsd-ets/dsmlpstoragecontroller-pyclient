@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository is for the Python client of the DSMLP Storage Controller gRPC Service. The name of the Python package is `dsmlpstoragecontrollerclient`. For more information, please refer to the provided [example](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/examples/clientargsmanager-example.py).
+This repository is for the Python client of the DSMLP Storage Controller gRPC Service. The name of the Python package is `dsmlpstoragecontrollerclient`. For more information, please refer to the provided [example](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/example.py).
 
 ## Required for Client Operations
 
@@ -42,3 +42,11 @@ The `ClientArgs` class contains command line argument options for `ClientArgsMan
 ### ClientArgsManager
 
 The `ClientArgsManager` class is used for parsing command line arguments, which can then be passed as arguments to the client.
+
+### Command Line Operation Syntax Example
+
+```bash
+cd src/dsmlpstoragecontrollerclient
+
+python -m example -address="$DNS" -port=9092 -ca="/your/ca/location/ca.crt" -key="/your/key/location/$DNS-client.key" -cert="/your/certs/location/$DNS-client.crt" -request="GetPersonalQuota" -uid=12 -workspace_name="testing"
+```
