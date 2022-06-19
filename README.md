@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository is for the Python client of the DSMLP Storage Controller gRPC Service. The name of the Python package is `dsmlpstoragecontrollerclient`. If you would like to use the client with command line arguments, please refer to [client.py](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/client.py).
+This repository is for the Python client of the <a href="https://github.com/ucsd-ets/dsmlpstoragecontroller" target="_blank">DSMLP Storage Controller gRPC Service</a>. The name of the Python package is [dsmlpstoragecontrollerclient](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/tree/main/src/dsmlpstoragecontrollerclient). If you would like to use the client with command line arguments, please refer to [client.py](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/client.py).
 
 **Minimum Python Version:** 3.10
 
@@ -14,7 +14,7 @@ The [ClientConfig](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/b
 
 ### Client
 
-The [Client](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/client.py) class provides the available gRPC functions for communicating with the [server](https://github.com/ucsd-ets/dsmlpstoragecontroller). It must be used as a context manager (`with` statement is required).
+The [Client](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/client.py) class provides the available gRPC functions for communicating with the <a href="https://github.com/ucsd-ets/dsmlpstoragecontroller" target="_blank">server</a>. It must be used as a context manager (`with` statement is required).
 
 ### Environment Variables Configuration
 
