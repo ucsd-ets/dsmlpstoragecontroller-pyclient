@@ -10,11 +10,11 @@ This repository is for the Python client of the DSMLP Storage Controller gRPC Se
 
 ### ClientConfig
 
-The `ClientConfig` class stores the configuration data that is used by the `Client` class.
+The [ClientConfig](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/clientconfig.py) class stores the configuration data that is used by the [Client](#client) class.
 
 ### Client
 
-The `Client` class provides the available gRPC functions for communicating with the server. It must be used as a context manager (`with` statement is required).
+The [Client](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/client.py) class provides the available gRPC functions for communicating with the [server](https://github.com/ucsd-ets/dsmlpstoragecontroller). It must be used as a context manager (`with` statement is required).
 
 ### Environment Variables Configuration
 
@@ -26,7 +26,7 @@ The `Client` class provides the available gRPC functions for communicating with 
     - DSMLP_STORAGE_CONTROLLER_CERT: the absolute file path of the CERT
     - DSMLP_STORAGE_CONTROLLER_KEY: the absolute file path of the KEY
 
-.env
+Example .env (values not included)
 ```
 DSMLP_STORAGE_CONTROLLER_PORT=
 DSMLP_STORAGE_CONTROLLER_ADDRESS=
@@ -39,11 +39,11 @@ DSMLP_STORAGE_CONTROLLER_KEY=
 
 ### ClientArgs
 
-The [ClientArgs](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/clientargs.py) class contains command line argument options for the client.
+The [ClientArgs](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/clientargs.py) class contains command line argument options for the [client](#client).
 
 ### ClientArgsManager
 
-The [ClientArgsManager](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/clientargsmanager.py) class is used for parsing command line arguments, which can then be passed as arguments to the client.
+The [ClientArgsManager](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/clientargsmanager.py) class is used for parsing command line arguments, which can then be passed as arguments to the [client](#client).
 
 ### Command Line Operation Example for GetPersonalQuota
 
