@@ -2,7 +2,9 @@ import codecs
 import os.path
 
 from setuptools import find_packages, setup
+from sys import version_info
 
+PYTHON_VERSION = f"{version_info.major}.{version_info.minor}.{version_info.micro}"
 
 def read(rel_path):
     here = os.path.abspath(os.path.dirname(__file__))
@@ -35,12 +37,12 @@ setup(
         "Bug Tracker": "https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/issues",
     },
     classifiers=[
-        "Programming Language :: Python :: 3.10",
+        f"Programming Language :: Python :: {PYTHON_VERSION}",
         "Operating System :: OS Independent",
     ],
     package_dir={"": "src"},
     packages=find_packages(where="src", include="dsmlpstoragecontrollerclient"),
-    python_requires=">=3.10",
+    python_requires=f">={PYTHON_VERSION}",
     install_requires=[
         "grpcio>=1.46.3",
         "grpcio-tools>=1.46.3",
