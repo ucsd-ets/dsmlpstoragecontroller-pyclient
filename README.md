@@ -39,13 +39,13 @@ DSMLP_STORAGE_CONTROLLER_KEY=
 
 ### ClientArgs
 
-The `ClientArgs` class contains command line argument options for `ClientArgsManager`.
+The [ClientArgs](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/clientargs.py) class contains command line argument options for the client.
 
 ### ClientArgsManager
 
-The `ClientArgsManager` class is used for parsing command line arguments, which can then be passed as arguments to the client.
+The [ClientArgsManager](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/clientargsmanager.py) class is used for parsing command line arguments, which can then be passed as arguments to the client.
 
-### Command Line Operation Syntax Example
+### Command Line Operation Example for GetPersonalQuota
 
 ```bash
 cd src/dsmlpstoragecontrollerclient
