@@ -28,7 +28,7 @@ jobs:
         - name: Run action for creating release
           uses: softprops/action-gh-release@v1
           with:
-            files: tar -czvf archive.tar.gz stuff
+            files: dsmlpstoragecontrollerclient.tar.gz
             tag_name: ${{ github.ref_name }}
             generate_release_notes: true
             token: ${{ secrets.GITHUB_TOKEN }}
