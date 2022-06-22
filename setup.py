@@ -41,7 +41,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     package_dir={"": "src"},
-    packages=find_packages(where="src", include="dsmlpstoragecontrollerclient"),
+    packages=find_packages(where="src"),
     python_requires=f">={PYTHON_VERSION}",
     install_requires=[
         "grpcio>=1.46.3",

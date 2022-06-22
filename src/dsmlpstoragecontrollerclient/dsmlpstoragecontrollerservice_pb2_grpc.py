@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import dsmlpstoragecontrollerservice_pb2 as dsmlpstoragecontrollerservice__pb2
+from .dsmlpstoragecontrollerservice_pb2 import *
 
 
 class DSMLPStorageControllerServiceStub(object):
@@ -16,48 +16,48 @@ class DSMLPStorageControllerServiceStub(object):
         """
         self.GetPersonalQuota = channel.unary_unary(
                 '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetPersonalQuota',
-                request_serializer=dsmlpstoragecontrollerservice__pb2.GetPersonalQuotaRequest.SerializeToString,
-                response_deserializer=dsmlpstoragecontrollerservice__pb2.GetPersonalQuotaResponse.FromString,
+                request_serializer=GetPersonalQuotaRequest.SerializeToString,
+                response_deserializer=GetPersonalQuotaResponse.FromString,
                 )
         self.SetPersonalQuota = channel.unary_unary(
                 '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetPersonalQuota',
-                request_serializer=dsmlpstoragecontrollerservice__pb2.SetPersonalQuotaRequest.SerializeToString,
-                response_deserializer=dsmlpstoragecontrollerservice__pb2.Void.FromString,
+                request_serializer=SetPersonalQuotaRequest.SerializeToString,
+                response_deserializer=Void.FromString,
                 )
         self.GetTeamQuota = channel.unary_unary(
                 '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetTeamQuota',
-                request_serializer=dsmlpstoragecontrollerservice__pb2.GetTeamQuotaRequest.SerializeToString,
-                response_deserializer=dsmlpstoragecontrollerservice__pb2.GetTeamQuotaResponse.FromString,
+                request_serializer=GetTeamQuotaRequest.SerializeToString,
+                response_deserializer=GetTeamQuotaResponse.FromString,
                 )
         self.SetTeamQuota = channel.unary_unary(
                 '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetTeamQuota',
-                request_serializer=dsmlpstoragecontrollerservice__pb2.SetTeamQuotaRequest.SerializeToString,
-                response_deserializer=dsmlpstoragecontrollerservice__pb2.Void.FromString,
+                request_serializer=SetTeamQuotaRequest.SerializeToString,
+                response_deserializer=Void.FromString,
                 )
         self.GetHomeQuota = channel.unary_unary(
                 '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetHomeQuota',
-                request_serializer=dsmlpstoragecontrollerservice__pb2.GetHomeQuotaRequest.SerializeToString,
-                response_deserializer=dsmlpstoragecontrollerservice__pb2.GetHomeQuotaResponse.FromString,
+                request_serializer=GetHomeQuotaRequest.SerializeToString,
+                response_deserializer=GetHomeQuotaResponse.FromString,
                 )
         self.SetHomeQuota = channel.unary_unary(
                 '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetHomeQuota',
-                request_serializer=dsmlpstoragecontrollerservice__pb2.SetHomeQuotaRequest.SerializeToString,
-                response_deserializer=dsmlpstoragecontrollerservice__pb2.Void.FromString,
+                request_serializer=SetHomeQuotaRequest.SerializeToString,
+                response_deserializer=Void.FromString,
                 )
         self.CreateWorkspace = channel.unary_unary(
                 '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateWorkspace',
-                request_serializer=dsmlpstoragecontrollerservice__pb2.CreateWorkspaceRequest.SerializeToString,
-                response_deserializer=dsmlpstoragecontrollerservice__pb2.Void.FromString,
+                request_serializer=CreateWorkspaceRequest.SerializeToString,
+                response_deserializer=Void.FromString,
                 )
         self.CreateHomeDirectory = channel.unary_unary(
                 '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateHomeDirectory',
-                request_serializer=dsmlpstoragecontrollerservice__pb2.CreateHomeDirectoryRequest.SerializeToString,
-                response_deserializer=dsmlpstoragecontrollerservice__pb2.Void.FromString,
+                request_serializer=CreateHomeDirectoryRequest.SerializeToString,
+                response_deserializer=Void.FromString,
                 )
         self.ListHomeDirectories = channel.unary_unary(
                 '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/ListHomeDirectories',
-                request_serializer=dsmlpstoragecontrollerservice__pb2.Void.SerializeToString,
-                response_deserializer=dsmlpstoragecontrollerservice__pb2.ListHomeDirectoriesResponse.FromString,
+                request_serializer=Void.SerializeToString,
+                response_deserializer=ListHomeDirectoriesResponse.FromString,
                 )
 
 
@@ -123,48 +123,48 @@ def add_DSMLPStorageControllerServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetPersonalQuota': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPersonalQuota,
-                    request_deserializer=dsmlpstoragecontrollerservice__pb2.GetPersonalQuotaRequest.FromString,
-                    response_serializer=dsmlpstoragecontrollerservice__pb2.GetPersonalQuotaResponse.SerializeToString,
+                    request_deserializer=GetPersonalQuotaRequest.FromString,
+                    response_serializer=GetPersonalQuotaResponse.SerializeToString,
             ),
             'SetPersonalQuota': grpc.unary_unary_rpc_method_handler(
                     servicer.SetPersonalQuota,
-                    request_deserializer=dsmlpstoragecontrollerservice__pb2.SetPersonalQuotaRequest.FromString,
-                    response_serializer=dsmlpstoragecontrollerservice__pb2.Void.SerializeToString,
+                    request_deserializer=SetPersonalQuotaRequest.FromString,
+                    response_serializer=Void.SerializeToString,
             ),
             'GetTeamQuota': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTeamQuota,
-                    request_deserializer=dsmlpstoragecontrollerservice__pb2.GetTeamQuotaRequest.FromString,
-                    response_serializer=dsmlpstoragecontrollerservice__pb2.GetTeamQuotaResponse.SerializeToString,
+                    request_deserializer=GetTeamQuotaRequest.FromString,
+                    response_serializer=GetTeamQuotaResponse.SerializeToString,
             ),
             'SetTeamQuota': grpc.unary_unary_rpc_method_handler(
                     servicer.SetTeamQuota,
-                    request_deserializer=dsmlpstoragecontrollerservice__pb2.SetTeamQuotaRequest.FromString,
-                    response_serializer=dsmlpstoragecontrollerservice__pb2.Void.SerializeToString,
+                    request_deserializer=SetTeamQuotaRequest.FromString,
+                    response_serializer=Void.SerializeToString,
             ),
             'GetHomeQuota': grpc.unary_unary_rpc_method_handler(
                     servicer.GetHomeQuota,
-                    request_deserializer=dsmlpstoragecontrollerservice__pb2.GetHomeQuotaRequest.FromString,
-                    response_serializer=dsmlpstoragecontrollerservice__pb2.GetHomeQuotaResponse.SerializeToString,
+                    request_deserializer=GetHomeQuotaRequest.FromString,
+                    response_serializer=GetHomeQuotaResponse.SerializeToString,
             ),
             'SetHomeQuota': grpc.unary_unary_rpc_method_handler(
                     servicer.SetHomeQuota,
-                    request_deserializer=dsmlpstoragecontrollerservice__pb2.SetHomeQuotaRequest.FromString,
-                    response_serializer=dsmlpstoragecontrollerservice__pb2.Void.SerializeToString,
+                    request_deserializer=SetHomeQuotaRequest.FromString,
+                    response_serializer=Void.SerializeToString,
             ),
             'CreateWorkspace': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateWorkspace,
-                    request_deserializer=dsmlpstoragecontrollerservice__pb2.CreateWorkspaceRequest.FromString,
-                    response_serializer=dsmlpstoragecontrollerservice__pb2.Void.SerializeToString,
+                    request_deserializer=CreateWorkspaceRequest.FromString,
+                    response_serializer=Void.SerializeToString,
             ),
             'CreateHomeDirectory': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateHomeDirectory,
-                    request_deserializer=dsmlpstoragecontrollerservice__pb2.CreateHomeDirectoryRequest.FromString,
-                    response_serializer=dsmlpstoragecontrollerservice__pb2.Void.SerializeToString,
+                    request_deserializer=CreateHomeDirectoryRequest.FromString,
+                    response_serializer=Void.SerializeToString,
             ),
             'ListHomeDirectories': grpc.unary_unary_rpc_method_handler(
                     servicer.ListHomeDirectories,
-                    request_deserializer=dsmlpstoragecontrollerservice__pb2.Void.FromString,
-                    response_serializer=dsmlpstoragecontrollerservice__pb2.ListHomeDirectoriesResponse.SerializeToString,
+                    request_deserializer=Void.FromString,
+                    response_serializer=ListHomeDirectoriesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -188,8 +188,8 @@ class DSMLPStorageControllerService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetPersonalQuota',
-            dsmlpstoragecontrollerservice__pb2.GetPersonalQuotaRequest.SerializeToString,
-            dsmlpstoragecontrollerservice__pb2.GetPersonalQuotaResponse.FromString,
+            GetPersonalQuotaRequest.SerializeToString,
+            GetPersonalQuotaResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -205,8 +205,8 @@ class DSMLPStorageControllerService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetPersonalQuota',
-            dsmlpstoragecontrollerservice__pb2.SetPersonalQuotaRequest.SerializeToString,
-            dsmlpstoragecontrollerservice__pb2.Void.FromString,
+            SetPersonalQuotaRequest.SerializeToString,
+            Void.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -222,8 +222,8 @@ class DSMLPStorageControllerService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetTeamQuota',
-            dsmlpstoragecontrollerservice__pb2.GetTeamQuotaRequest.SerializeToString,
-            dsmlpstoragecontrollerservice__pb2.GetTeamQuotaResponse.FromString,
+            GetTeamQuotaRequest.SerializeToString,
+            GetTeamQuotaResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -239,8 +239,8 @@ class DSMLPStorageControllerService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetTeamQuota',
-            dsmlpstoragecontrollerservice__pb2.SetTeamQuotaRequest.SerializeToString,
-            dsmlpstoragecontrollerservice__pb2.Void.FromString,
+            SetTeamQuotaRequest.SerializeToString,
+            Void.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -256,8 +256,8 @@ class DSMLPStorageControllerService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetHomeQuota',
-            dsmlpstoragecontrollerservice__pb2.GetHomeQuotaRequest.SerializeToString,
-            dsmlpstoragecontrollerservice__pb2.GetHomeQuotaResponse.FromString,
+            GetHomeQuotaRequest.SerializeToString,
+            GetHomeQuotaResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -273,8 +273,8 @@ class DSMLPStorageControllerService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetHomeQuota',
-            dsmlpstoragecontrollerservice__pb2.SetHomeQuotaRequest.SerializeToString,
-            dsmlpstoragecontrollerservice__pb2.Void.FromString,
+            SetHomeQuotaRequest.SerializeToString,
+            Void.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -290,8 +290,8 @@ class DSMLPStorageControllerService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateWorkspace',
-            dsmlpstoragecontrollerservice__pb2.CreateWorkspaceRequest.SerializeToString,
-            dsmlpstoragecontrollerservice__pb2.Void.FromString,
+            CreateWorkspaceRequest.SerializeToString,
+            Void.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -307,8 +307,8 @@ class DSMLPStorageControllerService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateHomeDirectory',
-            dsmlpstoragecontrollerservice__pb2.CreateHomeDirectoryRequest.SerializeToString,
-            dsmlpstoragecontrollerservice__pb2.Void.FromString,
+            CreateHomeDirectoryRequest.SerializeToString,
+            Void.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -324,7 +324,7 @@ class DSMLPStorageControllerService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/ListHomeDirectories',
-            dsmlpstoragecontrollerservice__pb2.Void.SerializeToString,
-            dsmlpstoragecontrollerservice__pb2.ListHomeDirectoriesResponse.FromString,
+            Void.SerializeToString,
+            ListHomeDirectoriesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

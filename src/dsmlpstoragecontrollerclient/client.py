@@ -1,10 +1,10 @@
 from typing import List
 
 from grpc import secure_channel
-from clientconfig import ClientConfig
+from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
 
-import dsmlpstoragecontrollerservice_pb2 as pb2
-from dsmlpstoragecontrollerservice_pb2_grpc import DSMLPStorageControllerServiceStub
+from .dsmlpstoragecontrollerservice_pb2 import *
+from .dsmlpstoragecontrollerservice_pb2_grpc import DSMLPStorageControllerServiceStub
 
 
 class Client:
@@ -63,7 +63,7 @@ class Client:
             The personal quota.
         """
         try:
-            get_personal_quota_request = pb2.GetPersonalQuotaRequest(
+            get_personal_quota_request = GetPersonalQuotaRequest(
                 uid=self.config.uid, workspaceName=self.config.workspace_name
             )
         except Exception:
@@ -83,7 +83,7 @@ class Client:
             The personal quota.
         """
         try:
-            set_personal_quota_request = pb2.SetPersonalQuotaRequest(
+            set_personal_quota_request = SetPersonalQuotaRequest(
                 uid=self.config.uid, userquota=self.config.userquota, workspaceName=self.config.workspace_name
             )
         except Exception:
@@ -103,7 +103,7 @@ class Client:
             The groupquota of the team.
         """
         try:
-            get_team_quota_request = pb2.GetTeamQuotaRequest(
+            get_team_quota_request = GetTeamQuotaRequest(
                 gid=self.config.gid, workspaceName=self.config.workspace_name
             )
         except Exception:
@@ -119,7 +119,7 @@ class Client:
     def set_team_quota(self):
         """Set team quota in DSMLPStorageController."""
         try:
-            set_team_quota_request = pb2.SetTeamQuotaRequest(
+            set_team_quota_request = SetTeamQuotaRequest(
                 gid=self.config.gid, groupquota=self.config.groupquota, workspaceName=self.config.workspace_name
             )
         except Exception:
@@ -139,7 +139,7 @@ class Client:
             The home quota.
         """
         try:
-            get_home_quota_request = pb2.GetHomeQuotaRequest(uid=self.config.uid)
+            get_home_quota_request = GetHomeQuotaRequest(uid=self.config.uid)
         except Exception:
             print("failed to create GetHomeQuotaRequest")
             raise
@@ -153,7 +153,7 @@ class Client:
     def set_home_quota(self):
         """Set home quota in DSMLPStorageController."""
         try:
-            set_home_quota_request = pb2.SetHomeQuotaRequest(
+            set_home_quota_request = SetHomeQuotaRequest(
                 uid=self.config.uid, userquota=self.config.userquota
             )
         except Exception:
@@ -169,7 +169,7 @@ class Client:
     def create_workspace_name(self):
         """Create a workspace name in DSMLPStorageController."""
         try:
-            create_workspace_request = pb2.CreateWorkspaceRequest(workspaceName=self.config.workspace_name)
+            create_workspace_request = CreateWorkspaceRequest(workspaceName=self.config.workspace_name)
         except Exception:
             print("failed to create CreateWorkspaceRequest")
             raise
@@ -183,7 +183,7 @@ class Client:
     def create_home_directory(self):
         """Create a home directory in DSMLPStorageController."""
         try:
-            create_home_directory_request = pb2.CreateHomeDirectoryRequest(
+            create_home_directory_request = CreateHomeDirectoryRequest(
                 uid=self.config.uid, username=self.config.username
             )
         except Exception:
@@ -203,7 +203,7 @@ class Client:
             A list of home directories.
         """
         try:
-            list_home_directories_request = pb2.Void()
+            list_home_directories_request = Void()
         except Exception:
             print("failed to create GetListOfHomeDirectoriesRequest")
             raise

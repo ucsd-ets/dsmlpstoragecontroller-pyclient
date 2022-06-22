@@ -1,6 +1,6 @@
 from argparse import ArgumentParser, Namespace
 
-from clientargs import ClientArgs
+from dsmlpstoragecontrollerclient.clientargs import ClientArgs
 
 
 class ClientArgsManager():
