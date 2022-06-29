@@ -8,10 +8,7 @@ This repository is for the Python client of the <a href="https://github.com/ucsd
 
 ## Proto Files
 
-Generate proto files
-```bash
-python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. ./dsmlpstoragecontrollerservice.proto
-```
+Proto file generation is automated in Dev Container.
 
 ## Required for Client Operations
 
