@@ -6,6 +6,13 @@ This repository is for the Python client of the <a href="https://github.com/ucsd
 
 **Minimum Python Version:** 3.10
 
+## Proto Files
+
+Generate proto files
+```bash
+python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. ./dsmlpstoragecontrollerservice.proto
+```
+
 ## Required for Client Operations
 
 ### ClientConfig
