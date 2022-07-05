@@ -34,4 +34,4 @@ jobs:
             ${{ env.DIST_SDIST }}
           generate_release_notes: true
           token: ${{ secrets.GITHUB_TOKEN }}
-          release_tag: ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
