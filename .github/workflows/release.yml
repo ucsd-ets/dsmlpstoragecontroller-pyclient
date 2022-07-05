@@ -24,8 +24,8 @@ jobs:
             python -m pip install --upgrade pip
             pip install build
             python -m build
-            echo "{DIST_WHEEL}={ls dist | grep ".whl" }" >> $GITHUB_ENV
-            echo "{DIST_SDIST}={ls dist | grep ".tar.gz"}" >> $GITHUB_ENV
+            echo "DIST_WHEEL=$(ls dist | grep '.whl')" >> $GITHUB_ENV
+            echo "DIST_SDIST=$(ls dist | grep '.tar.gz')" >> $GITHUB_ENV
         - name: Run action for creating release
           uses: softprops/action-gh-release@v1
           with:
