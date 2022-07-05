@@ -1,0 +1,28 @@
+name: tag-version
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+env:
+  GITHUB_TOKEN: ${{ secrets.NHP002_PERSONAL_ACCESS_TOKEN }}
+
+jobs:
+  tag-version:
+    name: Tag Version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout actions
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ env.GITHUB_TOKEN }}
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.39.0
+        env:
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
