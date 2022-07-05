@@ -1,4 +1,4 @@
-name: Create release for dsmlpstoragecontrollerclient Python package
+name: Release
 
 on:
   push:
@@ -10,28 +10,28 @@ permissions:
 
 jobs:
   python-test:
-      name: Build Python package
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout actions
-          uses: actions/checkout@v3
-        - name: Set up Python 3.10.5
-          uses: actions/setup-python@v3
-          with:
-            python-version: 3.10.5
-        - name: Build dsmlpstoragecontrollerclient Python package
-          run: |
-            python -m pip install --upgrade pip
-            pip install build
-            python -m build
-            echo "DIST_WHEEL=dist/$(ls dist | grep '.whl')" >> $GITHUB_ENV
-            echo "DIST_SDIST=dist/$(ls dist | grep '.tar.gz')" >> $GITHUB_ENV
-        - name: Run action for creating release
-          uses: softprops/action-gh-release@v1
-          with:
-            files: 
-              ${{ env.DIST_WHEEL }}
-              ${{ env.DIST_SDIST }}
-            generate_release_notes: true
-            token: ${{ secrets.GITHUB_TOKEN }}
-        
+    name: Build Python package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout actions
+        uses: actions/checkout@v3
+      - name: Set up Python 3.10.5
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.10.5
+      - name: Build dsmlpstoragecontrollerclient Python package
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+          python -m build
+          echo "DIST_WHEEL=dist/$(ls dist | grep '.whl')" >> $GITHUB_ENV
+          echo "DIST_SDIST=dist/$(ls dist | grep '.tar.gz')" >> $GITHUB_ENV
+      - name: Run action for creating release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ${{ env.DIST_WHEEL }}
+            ${{ env.DIST_SDIST }}
+          generate_release_notes: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release_tag: ${{ github.ref_name }}
