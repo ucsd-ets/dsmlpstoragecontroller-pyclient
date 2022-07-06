@@ -42,6 +42,9 @@ jobs:
           token: ${{ env.GITHUB_TOKEN }}
       - name: Write version to __init__
         run: |
+          git config --global user.email "nhp002@ucsd.edu"
+          git config --global user.name "Naval Patel"
+
           git checkout main
           echo '__version__ = "${{ needs.tag-version.outputs.tag }}"' \
           > ./src/dsmlpstoragecontrollerclient/__init__.py
