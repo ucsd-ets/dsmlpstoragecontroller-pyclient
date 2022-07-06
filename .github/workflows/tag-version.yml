@@ -46,7 +46,7 @@ jobs:
           git config --global user.name "Naval Patel"
 
           echo "DSMLP_STORAGE_CONTROLLER_CLIENT_PACKAGE_VERSION=\
-          $("${{ needs.tag-version.outputs.tag }}" | sed -E 's/[a-zA-Z]|-[a-zA-Z0-9]+//g')" >> $GITHUB_ENV
+          $(needs.tag-version.outputs.tag | sed -E 's/[a-zA-Z]|-[a-zA-Z0-9]+//g') >> $GITHUB_ENV
 
           git checkout main
           echo '__version__ = "${{ env.DSMLP_STORAGE_CONTROLLER_CLIENT_PACKAGE_VERSION }}"' \
