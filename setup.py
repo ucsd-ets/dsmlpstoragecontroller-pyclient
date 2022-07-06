@@ -4,7 +4,7 @@ from sys import version_info
 
 from setuptools import find_packages, setup
 
-PYTHON_VERSION = f"{version_info.major}.{version_info.minor}.{version_info.micro}"
+MIN_PYTHON_VERSION = f"{version_info.major}.{version_info.minor}.0"
 
 def read(rel_path):
     here = os.path.abspath(os.path.dirname(__file__))
@@ -39,12 +39,12 @@ setup(
         "Bug Tracker": "https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/issues",
     },
     classifiers=[
-        f"Programming Language :: Python :: {PYTHON_VERSION}",
+        f"Programming Language :: Python :: {MIN_PYTHON_VERSION}",
         "Operating System :: OS Independent",
     ],
     package_dir={"": "src"},
     packages=find_packages(where="src"),
-    python_requires=f">={PYTHON_VERSION}",
+    python_requires=f">={MIN_PYTHON_VERSION}",
     install_requires=[
         "grpcio>=1.46.3",
         "grpcio-tools>=1.46.3",
