@@ -69,6 +69,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ env.GITHUB_TOKEN }}
+          ref: main
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.39.0
         env:
