@@ -68,6 +68,7 @@ jobs:
           git push origin main
   update-tag-version:
     name: Update tag version
+    needs: update-init-version
     runs-on: ubuntu-latest
     steps:
       - name: Checkout actions
