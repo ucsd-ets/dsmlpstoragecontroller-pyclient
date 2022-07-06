@@ -49,12 +49,6 @@ jobs:
           PACKAGE_VERSION="$(echo $PACKAGE_TAG | sed -E 's/[a-zA-Z]|-[a-zA-Z0-9]+//g')"
           echo "Package Version: $PACKAGE_VERSION"
 
-          git checkout release
-          echo "__version__ = '$PACKAGE_VERSION'" > ./src/dsmlpstoragecontrollerclient/__init__.py
-          git add ./src/dsmlpstoragecontrollerclient/__init__.py
-          git commit -m "updated version number"
-          git push origin release
-
           git checkout develop
           echo "__version__ = '$PACKAGE_VERSION'" > ./src/dsmlpstoragecontrollerclient/__init__.py
           git add ./src/dsmlpstoragecontrollerclient/__init__.py
