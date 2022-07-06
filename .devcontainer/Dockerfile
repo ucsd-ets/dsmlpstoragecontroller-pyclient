@@ -56,4 +56,3 @@ RUN mv ${TMP_PROTOS_PATH}/build/dsmlpstoragecontrollerservice_pb2_grpc.py /app/s
 
 WORKDIR "/"
 RUN rm -rf ${TMP_PROTOS_PATH}
-
