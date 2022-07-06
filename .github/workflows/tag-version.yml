@@ -50,15 +50,15 @@ jobs:
           echo "Package Version: $PACKAGE_VERSION"
 
           update_package_version_file () {
-            git checkout $1
+            git checkout $1 || true
             echo "__version__ = '$PACKAGE_VERSION'" > ./src/dsmlpstoragecontrollerclient/__init__.py
-            git add ./src/dsmlpstoragecontrollerclient/__init__.py && git commit -m "updated version number" && git push origin $1
-            git commit -m "updated version number" || exit 0
+            git add ./src/dsmlpstoragecontrollerclient/__init__.py 
+            git commit -m "updated version number"
             git push origin $1
           }
 
-          update_package_version_file "develop" || true
-          update_package_version_file "main" || true
+          update_package_version_file "develop"
+          update_package_version_file "main"
   update-tag-version:
     name: Update tag version
     needs: update-init-version
