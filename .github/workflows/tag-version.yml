@@ -49,16 +49,14 @@ jobs:
           echo $PACKAGE_TAG
           echo "DSMLP_STORAGE_CONTROLLER_CLIENT_PACKAGE_VERSION=$PACKAGE_TAG" >> $GITHUB_ENV
 
-          git checkout main
-          echo '__version__ = "${{ env.DSMLP_STORAGE_CONTROLLER_CLIENT_PACKAGE_VERSION }}" \
-          > ./src/dsmlpstoragecontrollerclient/__init__.py
-          git add ./src/dsmlpstoragecontrollerclient/__init__.py
-          git commit -m "updated version number"
-          git push origin main
-
           git checkout develop
-          echo '__version__ = "${{ env.DSMLP_STORAGE_CONTROLLER_CLIENT_PACKAGE_VERSION }}" \
-          > ./src/dsmlpstoragecontrollerclient/__init__.py
+          echo '__version__ = \"${{ env.DSMLP_STORAGE_CONTROLLER_CLIENT_PACKAGE_VERSION }}\"' > ./src/dsmlpstoragecontrollerclient/__init__.py
           git add ./src/dsmlpstoragecontrollerclient/__init__.py
           git commit -m "updated version number"
           git push origin develop
+
+          git checkout main
+          echo '__version__ = \"${{ env.DSMLP_STORAGE_CONTROLLER_CLIENT_PACKAGE_VERSION }}\"' > ./src/dsmlpstoragecontrollerclient/__init__.py
+          git add ./src/dsmlpstoragecontrollerclient/__init__.py
+          git commit -m "updated version number"
+          git push origin main
