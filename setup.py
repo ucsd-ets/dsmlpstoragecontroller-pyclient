@@ -1,8 +1,8 @@
 import codecs
 import os.path
+from sys import version_info
 
 from setuptools import find_packages, setup
-from sys import version_info
 
 PYTHON_VERSION = f"{version_info.major}.{version_info.minor}.{version_info.micro}"
 
@@ -21,8 +21,10 @@ def get_version(rel_path):
         raise RuntimeError("Unable to find version string.")
 
 
-with open("README.md", "r", encoding="utf-8") as readme_file:
-    long_description = readme_file.read()
+def get_long_description():
+    with open("README.md", "r", encoding="utf-8") as readme_file:
+        long_description = readme_file.read()
+    return long_description
 
 setup(
     name="dsmlpstoragecontrollerclient",
@@ -30,7 +32,7 @@ setup(
     author="Naval Patel",
     author_email="nhp002@ucsd.edu",
     description="Python client of the DSMLP Storage Controller gRPC Service",
-    long_description=long_description,
+    long_description=get_long_description(),
     long_description_content_type="text/markdown",
     url="https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient",
     project_urls={
