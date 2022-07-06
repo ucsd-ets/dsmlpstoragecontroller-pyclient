@@ -8,7 +8,7 @@ This repository is for the Python client of the <a href="https://github.com/ucsd
 
 ## Proto Files
 
-Proto file generation is automated in Dev Container.
+Proto file generation is automated in the Dev Container.
 
 ## Required for Client Operations
 
