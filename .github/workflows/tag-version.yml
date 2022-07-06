@@ -45,7 +45,7 @@ jobs:
         run: |
           git config --global user.email "nhp002@ucsd.edu"
           git config --global user.name "Naval Patel"
-          PACKAGE_TAG=${{ needs.check-next-tag-version.outputs.tag }}
+          PACKAGE_TAG=${{ needs.check-next-tag-version.outputs.new_tag }}
           PACKAGE_VERSION="$(echo $PACKAGE_TAG | sed -E 's/[a-zA-Z]|-[a-zA-Z0-9]+//g')"
           echo "Package Version: $PACKAGE_VERSION"
 
