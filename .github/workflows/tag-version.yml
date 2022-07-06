@@ -42,14 +42,14 @@ jobs:
           token: ${{ env.GITHUB_TOKEN }}
       - name: Write version to __init__
         run: |
-          git checkout -b main
+          git checkout main
           echo '__version__ = "${{ needs.tag-version.outputs.tag }}"' \
           > ./src/dsmlpstoragecontrollerclient/__init__.py
           git add ./src/dsmlpstoragecontrollerclient/__init__.py
           git commit -m "updated version number"
           git push origin main
 
-          git checkout -b develop
+          git checkout develop
           echo '__version__ = "${{ needs.tag-version.outputs.tag }}"' \
           > ./src/dsmlpstoragecontrollerclient/__init__.py
           git add ./src/dsmlpstoragecontrollerclient/__init__.py
