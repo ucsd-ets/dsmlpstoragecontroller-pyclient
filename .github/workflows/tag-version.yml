@@ -16,7 +16,7 @@ jobs:
     name: Check next tag version
     runs-on: ubuntu-latest
     outputs:
-      tag: ${{ steps.dry-run-version-bump.outputs.tag }}
+      new_tag: ${{ steps.dry-run-version-bump.outputs.new_tag }}
     steps:
       - name: Checkout actions
         uses: actions/checkout@v3
