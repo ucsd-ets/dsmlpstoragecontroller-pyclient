@@ -45,7 +45,7 @@ jobs:
           git config --global user.email "nhp002@ucsd.edu"
           git config --global user.name "Naval Patel"
           TAG=${{ needs.tag-version.outputs.tag }}
-          VERSION=$(echo $TAG | sed -E 's/[a-zA-Z]|-[a-zA-Z0-9]+//g')
+          VERSION = $TAG | sed -E 's/[a-zA-Z]|-[a-zA-Z0-9]+//g'
           echo "DSMLP_STORAGE_CONTROLLER_CLIENT_PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
 
           git checkout main
