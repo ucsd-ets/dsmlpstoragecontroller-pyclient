@@ -12,28 +12,29 @@ env:
   GITHUB_TOKEN: ${{ secrets.NHP002_PERSONAL_ACCESS_TOKEN }}
 
 jobs:
-  tag-version:
-    name: Tag Version
+  check-next-tag-version:
+    name: Check next tag version
     runs-on: ubuntu-latest
     outputs:
-      tag: ${{ steps.version-bump.outputs.tag }}
+      tag: ${{ steps.dry-run-version-bump.outputs.tag }}
     steps:
       - name: Checkout actions
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
           token: ${{ env.GITHUB_TOKEN }}
-      - name: Bump version and push tag
-        id: version-bump
+      - name: Perform dry run of github-tag-action
+        id: dry-run-version-bump
         uses: anothrNick/github-tag-action@1.39.0
         env:
           GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
           WITH_V: true
+          DRY_RUN: true
           DEFAULT_BUMP: patch
   update-init-version:
     name: Update __init__ Version
     runs-on: ubuntu-latest
-    needs: tag-version
+    needs: check-next-tag-version
     steps:
       - name: Checkout actions
         uses: actions/checkout@v3
@@ -44,9 +45,15 @@ jobs:
         run: |
           git config --global user.email "nhp002@ucsd.edu"
           git config --global user.name "Naval Patel"
-          PACKAGE_TAG=${{ needs.tag-version.outputs.tag }}
+          PACKAGE_TAG=${{ needs.check-next-tag-version.outputs.tag }}
           PACKAGE_VERSION="$(echo $PACKAGE_TAG | sed -E 's/[a-zA-Z]|-[a-zA-Z0-9]+//g')"
           echo "Package Version: $PACKAGE_VERSION"
+
+          git checkout release
+          echo "__version__ = '$PACKAGE_VERSION'" > ./src/dsmlpstoragecontrollerclient/__init__.py
+          git add ./src/dsmlpstoragecontrollerclient/__init__.py
+          git commit -m "updated version number"
+          git push origin release
 
           git checkout develop
           echo "__version__ = '$PACKAGE_VERSION'" > ./src/dsmlpstoragecontrollerclient/__init__.py
@@ -59,3 +66,18 @@ jobs:
           git add ./src/dsmlpstoragecontrollerclient/__init__.py
           git commit -m "updated version number"
           git push origin main
+  update-tag-version:
+    name: Update tag version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout actions
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ env.GITHUB_TOKEN }}
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.39.0
+        env:
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
