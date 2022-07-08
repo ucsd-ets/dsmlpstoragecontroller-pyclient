@@ -216,13 +216,10 @@ class Client:
 
 if __name__ == "__main__":
     from os import getenv
-    from dotenv import load_dotenv
     from clientargsmanager import ClientArgsManager
     from clientrequestmethods import ClientRequestMethods
     from connectionconfig import ConnectionConfig
 
-    # Load environment variables from .env file
-    load_dotenv()
     CA = getenv("DSMLP_STORAGE_CONTROLLER_CA")
     CERT = getenv("DSMLP_STORAGE_CONTROLLER_CERT")
     KEY = getenv("DSMLP_STORAGE_CONTROLLER_KEY")

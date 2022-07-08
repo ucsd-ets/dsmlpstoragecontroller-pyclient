@@ -1,10 +1,5 @@
 from os import getenv
 
-# import pytest
-from dotenv import load_dotenv
-
-load_dotenv()
-
 ADDRESS = getenv("ADDRESS")
 PORT = getenv("PORT")
 CA = getenv("CA")

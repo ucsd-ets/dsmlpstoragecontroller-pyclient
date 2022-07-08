@@ -4,27 +4,24 @@
 ARG VARIANT="3.10-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
-# [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
-ARG NODE_VERSION="none"
-RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+ARG DSMLP_STORAGE_CONTROLLER_CA
+ARG DSMLP_STORAGE_CONTROLLER_CERT
+ARG DSMLP_STORAGE_CONTROLLER_KEY
+ARG DSMLP_STORAGE_CONTROLLER_PORT
+ARG DSMLP_STORAGE_CONTROLLER_ADDRESS
 
-# [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
+ENV DSMLP_STORAGE_CONTROLLER_CA=${DSMLP_STORAGE_CONTROLLER_CA}
+ENV DSMLP_STORAGE_CONTROLLER_CERT=${DSMLP_STORAGE_CONTROLLER_CERT}
+ENV DSMLP_STORAGE_CONTROLLER_KEY=${DSMLP_STORAGE_CONTROLLER_KEY}
+ENV DSMLP_STORAGE_CONTROLLER_PORT=${DSMLP_STORAGE_CONTROLLER_PORT}
+ENV DSMLP_STORAGE_CONTROLLER_ADDRESS=${DSMLP_STORAGE_CONTROLLER_ADDRESS}
+
 COPY requirements.txt /tmp/pip-tmp/
 RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
    && rm -rf /tmp/pip-tmp
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
-
-# [Optional] Uncomment this line to install global node packages.
-# RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
-
 COPY ./src/ /app/src/
 COPY ./requirements.txt /app/
-COPY ./setup.py /app/
-COPY ./conftest.py /app/
-COPY ./README.md /app/
 
 ARG TMP_PROTOS_PATH="/tmp/protos"
 COPY dsmlpstoragecontrollerservice.proto ${TMP_PROTOS_PATH}/src/

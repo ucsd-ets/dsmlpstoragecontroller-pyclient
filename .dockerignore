@@ -2,7 +2,9 @@ __pycache__
 .github
 .pytest_cache
 .venv
+.env
 .dockerignore
 Dockerfile
 build
 dist
+README
