@@ -27,7 +27,7 @@ Set the values for all of the following environment variables in the development
 - DSMLP_STORAGE_CONTROLLER_CERT: the absolute file path of the server CERT
 - DSMLP_STORAGE_CONTROLLER_KEY: the absolute file path of the server KEY
 - DSMLP_STORAGE_CONTROLLER_PORT: the port for communicating with the gRPC service
-- DSMLP_STORAGE_CONTROLLER_ADDRESS: the address for communicating with the gRPC service
+- DSMLP_STORAGE_CONTROLLER_DNS: the address for communicating with the gRPC service
 - DSMLP_STORAGE_CONTROLLER_CLIENT_CERT: the absolute file path of the client CERT
 - DSMLP_STORAGE_CONTROLLER_CLIENT_KEY: the absolute file path of the client KEY
 
