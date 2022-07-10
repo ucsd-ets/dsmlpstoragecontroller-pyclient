@@ -4,24 +4,15 @@
 ARG VARIANT="3.10-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
-ARG DSMLP_STORAGE_CONTROLLER_CA
-ARG DSMLP_STORAGE_CONTROLLER_CERT
-ARG DSMLP_STORAGE_CONTROLLER_KEY
-ARG DSMLP_STORAGE_CONTROLLER_PORT
-ARG DSMLP_STORAGE_CONTROLLER_ADDRESS
-
-ENV DSMLP_STORAGE_CONTROLLER_CA=${DSMLP_STORAGE_CONTROLLER_CA}
-ENV DSMLP_STORAGE_CONTROLLER_CERT=${DSMLP_STORAGE_CONTROLLER_CERT}
-ENV DSMLP_STORAGE_CONTROLLER_KEY=${DSMLP_STORAGE_CONTROLLER_KEY}
-ENV DSMLP_STORAGE_CONTROLLER_PORT=${DSMLP_STORAGE_CONTROLLER_PORT}
-ENV DSMLP_STORAGE_CONTROLLER_ADDRESS=${DSMLP_STORAGE_CONTROLLER_ADDRESS}
-
 COPY requirements.txt /tmp/pip-tmp/
 RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
    && rm -rf /tmp/pip-tmp
 
-COPY ./src/ /app/src/
+COPY ./src/dsmlpstoragecontrollerclient/ /app/src/dsmlpstoragecontrollerclient
+COPY ./pyproject.toml /app/
+COPY ./setup.py /app/
 COPY ./requirements.txt /app/
+COPY ./README.md /app/
 
 ARG TMP_PROTOS_PATH="/tmp/protos"
 COPY dsmlpstoragecontrollerservice.proto ${TMP_PROTOS_PATH}/src/

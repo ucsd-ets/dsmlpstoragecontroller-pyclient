@@ -24,10 +24,12 @@ The [Client](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/ma
 
 Set the values for all of the following environment variables in the development/production environment (values not provided here):
 - DSMLP_STORAGE_CONTROLLER_CA: the absolute file path of the CA
-- DSMLP_STORAGE_CONTROLLER_CERT: the absolute file path of the CERT
-- DSMLP_STORAGE_CONTROLLER_KEY: the absolute file path of the KEY
+- DSMLP_STORAGE_CONTROLLER_CERT: the absolute file path of the server CERT
+- DSMLP_STORAGE_CONTROLLER_KEY: the absolute file path of the server KEY
 - DSMLP_STORAGE_CONTROLLER_PORT: the port for communicating with the gRPC service
 - DSMLP_STORAGE_CONTROLLER_ADDRESS: the address for communicating with the gRPC service
+- DSMLP_STORAGE_CONTROLLER_CLIENT_CERT: the absolute file path of the client CERT
+- DSMLP_STORAGE_CONTROLLER_CLIENT_KEY: the absolute file path of the client KEY
 
 ## Optional: For Command Line Operations
 
@@ -41,8 +43,7 @@ The [ClientArgsManager](https://github.com/ucsd-ets/dsmlpstoragecontroller-pycli
 
 ### Command Line Operation Example for GetPersonalQuota
 
+After installing dsmlpstoragecontrollerclient with pip, you can directly run commands using the package.
 ```bash
-cd src/dsmlpstoragecontrollerclient
-
-python -m client -address="$DNS" -port=9092 -ca="/your/ca/location/ca.crt" -key="/your/key/location/$DNS-client.key" -cert="/your/cert/location/$DNS-client.crt" -request="GetPersonalQuota" -uid=12 -workspace_name="testing"
+python -m dsmlpstoragecontrollerclient -ca="/your/ca/location/ca.crt" -cert="/your/cert/location/$DNS-client.crt" -key="/your/key/location/$DNS-client.key" -port=9092 -address="$DNS" -request="GetPersonalQuota" -uid=12 -workspace_name="testing"
 ```

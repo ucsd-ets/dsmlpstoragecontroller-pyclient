@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from .dsmlpstoragecontrollerservice_pb2 import *
+from dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice_pb2 import *
 
 
 class DSMLPStorageControllerServiceStub(object):
