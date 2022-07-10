@@ -8,7 +8,7 @@ This repository is for the Python client of the <a href="https://github.com/ucsd
 
 ## Proto Files
 
-Proto file generation is automated in the Dev Container.
+Proto file generation is automated in the Dev Container. If the proto file is compiled without the Dev Container, the import statements will need to be edited manually.
 
 ## Required for Client Operations
 
@@ -22,22 +22,14 @@ The [Client](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/ma
 
 ### Environment Variables Configuration
 
-1. Create a '.env' file in the 'dsmlpstoragecontrollerclient' directory.
-2. Specify the following environment variables in the '.env' file:
-    - DSMLP_STORAGE_CONTROLLER_PORT: the port for communicating with the gRPC service
-    - DSMLP_STORAGE_CONTROLLER_ADDRESS: the address for communicating with the gRPC service
-    - DSMLP_STORAGE_CONTROLLER_CA: the absolute file path of the CA
-    - DSMLP_STORAGE_CONTROLLER_CERT: the absolute file path of the CERT
-    - DSMLP_STORAGE_CONTROLLER_KEY: the absolute file path of the KEY
-
-Example .env (values not included)
-```
-DSMLP_STORAGE_CONTROLLER_PORT=
-DSMLP_STORAGE_CONTROLLER_ADDRESS=
-DSMLP_STORAGE_CONTROLLER_CA=
-DSMLP_STORAGE_CONTROLLER_CERT=
-DSMLP_STORAGE_CONTROLLER_KEY=
-```
+Set the values for all of the following environment variables in the development/production environment (values not provided here):
+- DSMLP_STORAGE_CONTROLLER_CA: the absolute file path of the CA
+- DSMLP_STORAGE_CONTROLLER_CERT: the absolute file path of the server CERT
+- DSMLP_STORAGE_CONTROLLER_KEY: the absolute file path of the server KEY
+- DSMLP_STORAGE_CONTROLLER_PORT: the port for communicating with the gRPC service
+- DSMLP_STORAGE_CONTROLLER_ADDRESS: the address for communicating with the gRPC service
+- DSMLP_STORAGE_CONTROLLER_CLIENT_CERT: the absolute file path of the client CERT
+- DSMLP_STORAGE_CONTROLLER_CLIENT_KEY: the absolute file path of the client KEY
 
 ## Optional: For Command Line Operations
 
@@ -51,8 +43,7 @@ The [ClientArgsManager](https://github.com/ucsd-ets/dsmlpstoragecontroller-pycli
 
 ### Command Line Operation Example for GetPersonalQuota
 
+After installing dsmlpstoragecontrollerclient with pip, you can directly run commands using the package.
 ```bash
-cd src/dsmlpstoragecontrollerclient
-
-python -m client -address="$DNS" -port=9092 -ca="/your/ca/location/ca.crt" -key="/your/key/location/$DNS-client.key" -cert="/your/cert/location/$DNS-client.crt" -request="GetPersonalQuota" -uid=12 -workspace_name="testing"
+python -m dsmlpstoragecontrollerclient -ca="/your/ca/location/ca.crt" -cert="/your/cert/location/$DNS-client.crt" -key="/your/key/location/$DNS-client.key" -port=9092 -address="$DNS" -request="GetPersonalQuota" -uid=12 -workspace_name="testing"
 ```

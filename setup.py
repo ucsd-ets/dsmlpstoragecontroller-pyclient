@@ -47,7 +47,6 @@ setup(
     python_requires=f">={MIN_PYTHON_VERSION}",
     install_requires=[
         "grpcio>=1.46.3",
-        "grpcio-tools>=1.46.3",
-        "python-dotenv>=0.20.0",
+        "grpcio-tools>=1.46.3"
     ],
 )

@@ -1,15 +1,4 @@
-from os import getenv
-
-# import pytest
-from dotenv import load_dotenv
-
-load_dotenv()
-
-ADDRESS = getenv("ADDRESS")
-PORT = getenv("PORT")
-CA = getenv("CA")
-CERT = getenv("CERT")
-KEY = getenv("KEY")
+# from os import getenv
 
 
 # def pytest_addoption(parser):

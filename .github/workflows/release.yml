@@ -1,4 +1,4 @@
-name: Release
+name: release
 on:
   push:
     tags:
@@ -25,6 +25,14 @@ jobs:
           python -m build
           echo "DIST_WHEEL=dist/$(ls dist | grep '.whl')" >> $GITHUB_ENV
           echo "DIST_SDIST=dist/$(ls dist | grep '.tar.gz')" >> $GITHUB_ENV
+        env:
+          DSMLP_STORAGE_CONTROLLER_CA: ${{ secrets.DSMLP_STORAGE_CONTROLLER_CA }}
+          DSMLP_STORAGE_CONTROLLER_CERT: ${{ secrets.DSMLP_STORAGE_CONTROLLER_CERT }}
+          DSMLP_STORAGE_CONTROLLER_KEY: ${{ secrets.DSMLP_STORAGE_CONTROLLER_KEY }}
+          DSMLP_STORAGE_CONTROLLER_PORT: ${{ secrets.DSMLP_STORAGE_CONTROLLER_PORT }}
+          DSMLP_STORAGE_CONTROLLER_ADDRESS: ${{ secrets.DSMLP_STORAGE_CONTROLLER_ADDRESS }}
+          DSMLP_STORAGE_CONTROLLER_CLIENT_CERT: ${{ secrets.DSMLP_STORAGE_CONTROLLER_CLIENT_CERT }}
+          DSMLP_STORAGE_CONTROLLER_CLIENT_KEY: ${{ secrets.DSMLP_STORAGE_CONTROLLER_CLIENT_KEY }}
       - name: Run action for creating release
         uses: softprops/action-gh-release@v1
         with:

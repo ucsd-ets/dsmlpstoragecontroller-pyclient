@@ -49,7 +49,7 @@ def rewrite_import(pb2_grpc_path: str) -> None:
             """
         )
 
-    lines[4] = "from .dsmlpstoragecontrollerservice_pb2 import *"
+    lines[4] = "from dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice_pb2 import *"
 
     for i in range(4, len(lines)):
         lines[i] = lines[i].replace("dsmlpstoragecontrollerservice__pb2.", "")
