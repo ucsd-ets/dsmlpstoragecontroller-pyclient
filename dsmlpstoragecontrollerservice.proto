@@ -60,7 +60,8 @@ message SetHomeQuotaRequest {
 }
 
 message CreateWorkspaceRequest {
-    string name = 1;
+    uint32 uid = 1;
+    string name = 2;
 }
 
 message CreateHomeDirectoryRequest {
