@@ -59,6 +59,7 @@ with Client(config) as client:
         config.userquota = client_args_manager.get_userquota()
         client.set_home_quota()
     elif request_method == ClientRequestMethods.CreateWorkspace.value:
+        config.uid = client_args_manager.get_uid()
         config.workspace_name = client_args_manager.get_workspace_name()
         client.create_workspace()
     elif request_method == ClientRequestMethods.CreateHomeDirectory.value:

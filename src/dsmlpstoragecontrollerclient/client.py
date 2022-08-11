@@ -171,7 +171,7 @@ class Client:
     def create_workspace(self):
         """Create a workspace with the given name in DSMLPStorageController."""
         try:
-            create_workspace_request = CreateWorkspaceRequest(name=self.config.workspace_name)
+            create_workspace_request = CreateWorkspaceRequest(uid=self.config.uid, name=self.config.workspace_name)
         except Exception:
             print("failed to create CreateWorkspaceRequest")
             raise
