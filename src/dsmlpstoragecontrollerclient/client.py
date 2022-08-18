@@ -30,6 +30,7 @@ class Client:
         self.__channel = secure_channel(
             target=f"{self.config.connection_config.address}:{self.config.connection_config.port}",
             credentials=self.config.connection_config.creds,
+            options=[('grpc.max_receive_message_length', (1024*1024*8))]
         )
 
         try:
