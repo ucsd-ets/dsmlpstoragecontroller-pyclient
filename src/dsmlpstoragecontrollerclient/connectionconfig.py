@@ -11,6 +11,7 @@ class ConnectionConfig:
         port: The port used for communicating with the DSMLP Storage Controller gRPC Service.
         address: The address used for communicating with the DSMLP Storage Controller gRPC Service.
     """
+
     def __init__(
         self, ca: str, key: str, cert: str, port: int, address: str = "localhost"
     ):

@@ -6,6 +6,7 @@ from setuptools import find_packages, setup
 
 MIN_PYTHON_VERSION = f"{version_info.major}.{version_info.minor}.0"
 
+
 def read(rel_path):
     here = os.path.abspath(os.path.dirname(__file__))
     with codecs.open(os.path.join(here, rel_path), "r") as fp:
@@ -26,6 +27,7 @@ def get_long_description():
         long_description = readme_file.read()
     return long_description
 
+
 setup(
     name="dsmlpstoragecontrollerclient",
     version=get_version("src/dsmlpstoragecontrollerclient/__init__.py"),
@@ -45,8 +47,5 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     python_requires=f">={MIN_PYTHON_VERSION}",
-    install_requires=[
-        "grpcio>=1.46.3",
-        "grpcio-tools>=1.46.3"
-    ],
+    install_requires=["grpcio>=1.46.3", "grpcio-tools>=1.46.3"],
 )

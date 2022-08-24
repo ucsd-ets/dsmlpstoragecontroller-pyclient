@@ -41,9 +41,9 @@ The [ClientArgs](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blo
 
 The [ClientArgsManager](https://github.com/ucsd-ets/dsmlpstoragecontroller-pyclient/blob/main/src/dsmlpstoragecontrollerclient/clientargsmanager.py) class is used for parsing command line arguments, which can then be passed as arguments to the [client](#client).
 
-### Command Line Operation Example for GetPersonalQuota
+### Command Line Operation Example for GetWorkspaceHomeQuota
 
 After installing dsmlpstoragecontrollerclient with pip, you can directly run commands using the package.
 ```bash
-python -m dsmlpstoragecontrollerclient -ca="/your/ca/location/ca.crt" -cert="/your/cert/location/$DNS-client.crt" -key="/your/key/location/$DNS-client.key" -port=9092 -address="$DNS" -request="GetPersonalQuota" -uid=12 -workspace_name="testing"
+python -m dsmlpstoragecontrollerclient -ca="/your/ca/location/ca.crt" -cert="/your/cert/location/$DNS-client.crt" -key="/your/key/location/$DNS-client.key" -port=9092 -address="$DNS" -request="GetWorkspaceHomeQuota" -uid=12 -workspace_name="testing"
 ```
