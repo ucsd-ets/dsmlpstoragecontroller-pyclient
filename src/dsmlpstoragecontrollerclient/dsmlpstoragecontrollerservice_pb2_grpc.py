@@ -14,317 +14,427 @@ class DSMLPStorageControllerServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetPersonalQuota = channel.unary_unary(
-                '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetPersonalQuota',
-                request_serializer=GetPersonalQuotaRequest.SerializeToString,
-                response_deserializer=GetPersonalQuotaResponse.FromString,
-                )
-        self.SetPersonalQuota = channel.unary_unary(
-                '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetPersonalQuota',
-                request_serializer=SetPersonalQuotaRequest.SerializeToString,
-                response_deserializer=Void.FromString,
-                )
+        self.GetWorkspaceHomeQuota = channel.unary_unary(
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetWorkspaceHomeQuota",
+            request_serializer=GetWorkspaceHomeQuotaRequest.SerializeToString,
+            response_deserializer=GetWorkspaceHomeQuotaResponse.FromString,
+        )
+        self.SetWorkspaceHomeQuota = channel.unary_unary(
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetWorkspaceHomeQuota",
+            request_serializer=SetWorkspaceHomeQuotaRequest.SerializeToString,
+            response_deserializer=Void.FromString,
+        )
         self.GetTeamQuota = channel.unary_unary(
-                '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetTeamQuota',
-                request_serializer=GetTeamQuotaRequest.SerializeToString,
-                response_deserializer=GetTeamQuotaResponse.FromString,
-                )
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetTeamQuota",
+            request_serializer=GetTeamQuotaRequest.SerializeToString,
+            response_deserializer=GetTeamQuotaResponse.FromString,
+        )
         self.SetTeamQuota = channel.unary_unary(
-                '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetTeamQuota',
-                request_serializer=SetTeamQuotaRequest.SerializeToString,
-                response_deserializer=Void.FromString,
-                )
-        self.GetHomeQuota = channel.unary_unary(
-                '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetHomeQuota',
-                request_serializer=GetHomeQuotaRequest.SerializeToString,
-                response_deserializer=GetHomeQuotaResponse.FromString,
-                )
-        self.SetHomeQuota = channel.unary_unary(
-                '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetHomeQuota',
-                request_serializer=SetHomeQuotaRequest.SerializeToString,
-                response_deserializer=Void.FromString,
-                )
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetTeamQuota",
+            request_serializer=SetTeamQuotaRequest.SerializeToString,
+            response_deserializer=Void.FromString,
+        )
+        self.GetPersonalQuota = channel.unary_unary(
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetPersonalQuota",
+            request_serializer=GetPersonalQuotaRequest.SerializeToString,
+            response_deserializer=GetPersonalQuotaResponse.FromString,
+        )
+        self.SetPersonalQuota = channel.unary_unary(
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetPersonalQuota",
+            request_serializer=SetPersonalQuotaRequest.SerializeToString,
+            response_deserializer=Void.FromString,
+        )
         self.CreateWorkspace = channel.unary_unary(
-                '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateWorkspace',
-                request_serializer=CreateWorkspaceRequest.SerializeToString,
-                response_deserializer=Void.FromString,
-                )
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateWorkspace",
+            request_serializer=CreateWorkspaceRequest.SerializeToString,
+            response_deserializer=Void.FromString,
+        )
         self.CreateHomeDirectory = channel.unary_unary(
-                '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateHomeDirectory',
-                request_serializer=CreateHomeDirectoryRequest.SerializeToString,
-                response_deserializer=Void.FromString,
-                )
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateHomeDirectory",
+            request_serializer=CreateHomeDirectoryRequest.SerializeToString,
+            response_deserializer=Void.FromString,
+        )
         self.ListHomeDirectories = channel.unary_unary(
-                '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/ListHomeDirectories',
-                request_serializer=Void.SerializeToString,
-                response_deserializer=ListHomeDirectoriesResponse.FromString,
-                )
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/ListHomeDirectories",
+            request_serializer=Void.SerializeToString,
+            response_deserializer=ListHomeDirectoriesResponse.FromString,
+        )
 
 
 class DSMLPStorageControllerServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def GetPersonalQuota(self, request, context):
+    def GetWorkspaceHomeQuota(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
-    def SetPersonalQuota(self, request, context):
+    def SetWorkspaceHomeQuota(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetTeamQuota(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def SetTeamQuota(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
-    def GetHomeQuota(self, request, context):
+    def GetPersonalQuota(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
-    def SetHomeQuota(self, request, context):
+    def SetPersonalQuota(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CreateWorkspace(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CreateHomeDirectory(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ListHomeDirectories(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
 
 def add_DSMLPStorageControllerServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetPersonalQuota': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetPersonalQuota,
-                    request_deserializer=GetPersonalQuotaRequest.FromString,
-                    response_serializer=GetPersonalQuotaResponse.SerializeToString,
-            ),
-            'SetPersonalQuota': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetPersonalQuota,
-                    request_deserializer=SetPersonalQuotaRequest.FromString,
-                    response_serializer=Void.SerializeToString,
-            ),
-            'GetTeamQuota': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetTeamQuota,
-                    request_deserializer=GetTeamQuotaRequest.FromString,
-                    response_serializer=GetTeamQuotaResponse.SerializeToString,
-            ),
-            'SetTeamQuota': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetTeamQuota,
-                    request_deserializer=SetTeamQuotaRequest.FromString,
-                    response_serializer=Void.SerializeToString,
-            ),
-            'GetHomeQuota': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetHomeQuota,
-                    request_deserializer=GetHomeQuotaRequest.FromString,
-                    response_serializer=GetHomeQuotaResponse.SerializeToString,
-            ),
-            'SetHomeQuota': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetHomeQuota,
-                    request_deserializer=SetHomeQuotaRequest.FromString,
-                    response_serializer=Void.SerializeToString,
-            ),
-            'CreateWorkspace': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateWorkspace,
-                    request_deserializer=CreateWorkspaceRequest.FromString,
-                    response_serializer=Void.SerializeToString,
-            ),
-            'CreateHomeDirectory': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateHomeDirectory,
-                    request_deserializer=CreateHomeDirectoryRequest.FromString,
-                    response_serializer=Void.SerializeToString,
-            ),
-            'ListHomeDirectories': grpc.unary_unary_rpc_method_handler(
-                    servicer.ListHomeDirectories,
-                    request_deserializer=Void.FromString,
-                    response_serializer=ListHomeDirectoriesResponse.SerializeToString,
-            ),
+        "GetWorkspaceHomeQuota": grpc.unary_unary_rpc_method_handler(
+            servicer.GetWorkspaceHomeQuota,
+            request_deserializer=GetWorkspaceHomeQuotaRequest.FromString,
+            response_serializer=GetWorkspaceHomeQuotaResponse.SerializeToString,
+        ),
+        "SetWorkspaceHomeQuota": grpc.unary_unary_rpc_method_handler(
+            servicer.SetWorkspaceHomeQuota,
+            request_deserializer=SetWorkspaceHomeQuotaRequest.FromString,
+            response_serializer=Void.SerializeToString,
+        ),
+        "GetTeamQuota": grpc.unary_unary_rpc_method_handler(
+            servicer.GetTeamQuota,
+            request_deserializer=GetTeamQuotaRequest.FromString,
+            response_serializer=GetTeamQuotaResponse.SerializeToString,
+        ),
+        "SetTeamQuota": grpc.unary_unary_rpc_method_handler(
+            servicer.SetTeamQuota,
+            request_deserializer=SetTeamQuotaRequest.FromString,
+            response_serializer=Void.SerializeToString,
+        ),
+        "GetPersonalQuota": grpc.unary_unary_rpc_method_handler(
+            servicer.GetPersonalQuota,
+            request_deserializer=GetPersonalQuotaRequest.FromString,
+            response_serializer=GetPersonalQuotaResponse.SerializeToString,
+        ),
+        "SetPersonalQuota": grpc.unary_unary_rpc_method_handler(
+            servicer.SetPersonalQuota,
+            request_deserializer=SetPersonalQuotaRequest.FromString,
+            response_serializer=Void.SerializeToString,
+        ),
+        "CreateWorkspace": grpc.unary_unary_rpc_method_handler(
+            servicer.CreateWorkspace,
+            request_deserializer=CreateWorkspaceRequest.FromString,
+            response_serializer=Void.SerializeToString,
+        ),
+        "CreateHomeDirectory": grpc.unary_unary_rpc_method_handler(
+            servicer.CreateHomeDirectory,
+            request_deserializer=CreateHomeDirectoryRequest.FromString,
+            response_serializer=Void.SerializeToString,
+        ),
+        "ListHomeDirectories": grpc.unary_unary_rpc_method_handler(
+            servicer.ListHomeDirectories,
+            request_deserializer=Void.FromString,
+            response_serializer=ListHomeDirectoriesResponse.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'dsmlpstoragecontrollerservice.DSMLPStorageControllerService', rpc_method_handlers)
+        "dsmlpstoragecontrollerservice.DSMLPStorageControllerService",
+        rpc_method_handlers,
+    )
     server.add_generic_rpc_handlers((generic_handler,))
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class DSMLPStorageControllerService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def GetPersonalQuota(request,
+    def GetWorkspaceHomeQuota(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetPersonalQuota',
-            GetPersonalQuotaRequest.SerializeToString,
-            GetPersonalQuotaResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetWorkspaceHomeQuota",
+            GetWorkspaceHomeQuotaRequest.SerializeToString,
+            GetWorkspaceHomeQuotaResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def SetPersonalQuota(request,
+    def SetWorkspaceHomeQuota(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetPersonalQuota',
-            SetPersonalQuotaRequest.SerializeToString,
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetWorkspaceHomeQuota",
+            SetWorkspaceHomeQuotaRequest.SerializeToString,
             Void.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetTeamQuota(request,
+    def GetTeamQuota(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetTeamQuota',
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetTeamQuota",
             GetTeamQuotaRequest.SerializeToString,
             GetTeamQuotaResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def SetTeamQuota(request,
+    def SetTeamQuota(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetTeamQuota',
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetTeamQuota",
             SetTeamQuotaRequest.SerializeToString,
             Void.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetHomeQuota(request,
+    def GetPersonalQuota(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetHomeQuota',
-            GetHomeQuotaRequest.SerializeToString,
-            GetHomeQuotaResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/GetPersonalQuota",
+            GetPersonalQuotaRequest.SerializeToString,
+            GetPersonalQuotaResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def SetHomeQuota(request,
+    def SetPersonalQuota(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetHomeQuota',
-            SetHomeQuotaRequest.SerializeToString,
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/SetPersonalQuota",
+            SetPersonalQuotaRequest.SerializeToString,
             Void.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CreateWorkspace(request,
+    def CreateWorkspace(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateWorkspace',
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateWorkspace",
             CreateWorkspaceRequest.SerializeToString,
             Void.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CreateHomeDirectory(request,
+    def CreateHomeDirectory(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateHomeDirectory',
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/CreateHomeDirectory",
             CreateHomeDirectoryRequest.SerializeToString,
             Void.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ListHomeDirectories(request,
+    def ListHomeDirectories(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/ListHomeDirectories',
+            "/dsmlpstoragecontrollerservice.DSMLPStorageControllerService/ListHomeDirectories",
             Void.SerializeToString,
             ListHomeDirectoriesResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )

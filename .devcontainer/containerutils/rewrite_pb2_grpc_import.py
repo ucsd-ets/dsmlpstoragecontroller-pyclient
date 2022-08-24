@@ -4,6 +4,7 @@ by the 'dsmlpstoragecontroller_pb2_grpc.py' file
 
 import argparse
 
+
 def retrieve_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog="DSMLP Storage Controller Python Proto File Rewriter",
@@ -13,23 +14,24 @@ def retrieve_args() -> argparse.Namespace:
                     """,
         add_help=True,
         allow_abbrev=True,
-        exit_on_error=True
+        exit_on_error=True,
     )
-    
+
     parser.add_argument(
         "-p",
         "--pb2_grpc_path",
         type=str,
         default="/tmp/protos/build/dsmlpstoragecontrollerservice_pb2_grpc.py",
-        help="Absolute path of 'dsmlpstoragecontrollerservice_pb2_grpc.py'"
+        help="Absolute path of 'dsmlpstoragecontrollerservice_pb2_grpc.py'",
     )
 
     args = parser.parse_args()
 
     if not hasattr(args, "pb2_grpc_path"):
         raise AttributeError("'pb2_grpc_path' argument is missing")
-    
+
     return args
+
 
 def rewrite_import(pb2_grpc_path: str) -> None:
     """Rewrites broken gRPC import statement found on line 5 and
@@ -49,7 +51,9 @@ def rewrite_import(pb2_grpc_path: str) -> None:
             """
         )
 
-    lines[4] = "from dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice_pb2 import *"
+    lines[
+        4
+    ] = "from dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice_pb2 import *"
 
     for i in range(4, len(lines)):
         lines[i] = lines[i].replace("dsmlpstoragecontrollerservice__pb2.", "")

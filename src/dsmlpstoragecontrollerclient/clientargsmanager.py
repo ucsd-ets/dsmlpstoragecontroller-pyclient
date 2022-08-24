@@ -3,7 +3,7 @@ from argparse import ArgumentParser, Namespace
 from dsmlpstoragecontrollerclient.clientargs import ClientArgs
 
 
-class ClientArgsManager():
+class ClientArgsManager:
     """Manage command line arguments for DSMLP Storage Controller client.
 
     Args:
@@ -61,7 +61,9 @@ class ClientArgsManager():
             ClientArgs.Groupquota.hyphenate(),
             help='group quota in the format of "-groupquota=25G"',
         )
-        parser.add_argument(ClientArgs.WorkspaceName.hyphenate(), help="name of workspace")
+        parser.add_argument(
+            ClientArgs.WorkspaceName.hyphenate(), help="name of workspace"
+        )
 
         args = parser.parse_args()
         return args

@@ -16,16 +16,16 @@ message GroupQuota {
     string groupquota = 2;
 }
 
-message GetPersonalQuotaRequest {
+message GetWorkspaceHomeQuotaRequest {
     uint32 uid = 1;
     string workspaceName = 2;
 }
 
-message GetPersonalQuotaResponse {
+message GetWorkspaceHomeQuotaResponse {
     UserQuota quota = 1;
 }
 
-message SetPersonalQuotaRequest {
+message SetWorkspaceHomeQuotaRequest {
     uint32 uid = 1;
     string userquota = 2;
     string workspaceName = 3;
@@ -46,15 +46,15 @@ message SetTeamQuotaRequest {
     string workspaceName = 3;
 }
 
-message GetHomeQuotaRequest {
+message GetPersonalQuotaRequest {
     uint32 uid = 1;
 }
 
-message GetHomeQuotaResponse {
+message GetPersonalQuotaResponse {
     UserQuota quota = 1;
 }
 
-message SetHomeQuotaRequest {
+message SetPersonalQuotaRequest {
     uint32 uid = 1;
     string userquota = 2;
 }
@@ -80,12 +80,12 @@ message ListHomeDirectoriesResponse {
 }
 
 service DSMLPStorageControllerService {
-    rpc GetPersonalQuota(GetPersonalQuotaRequest) returns (GetPersonalQuotaResponse);
-    rpc SetPersonalQuota(SetPersonalQuotaRequest) returns (Void);
+    rpc GetWorkspaceHomeQuota(GetWorkspaceHomeQuotaRequest) returns (GetWorkspaceHomeQuotaResponse);
+    rpc SetWorkspaceHomeQuota(SetWorkspaceHomeQuotaRequest) returns (Void);
     rpc GetTeamQuota(GetTeamQuotaRequest) returns (GetTeamQuotaResponse);
     rpc SetTeamQuota(SetTeamQuotaRequest) returns (Void);
-    rpc GetHomeQuota(GetHomeQuotaRequest) returns (GetHomeQuotaResponse);
-    rpc SetHomeQuota(SetHomeQuotaRequest) returns (Void);
+    rpc GetPersonalQuota(GetPersonalQuotaRequest) returns (GetPersonalQuotaResponse);
+    rpc SetPersonalQuota(SetPersonalQuotaRequest) returns (Void);
     rpc CreateWorkspace(CreateWorkspaceRequest) returns (Void);
     rpc CreateHomeDirectory(CreateHomeDirectoryRequest) returns (Void);
     rpc ListHomeDirectories(Void) returns (ListHomeDirectoriesResponse);

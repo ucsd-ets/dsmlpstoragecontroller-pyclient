@@ -4,7 +4,9 @@ from grpc import secure_channel
 from dsmlpstoragecontrollerclient.clientconfig import ClientConfig
 
 from dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice_pb2 import *
-from dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice_pb2_grpc import DSMLPStorageControllerServiceStub
+from dsmlpstoragecontrollerclient.dsmlpstoragecontrollerservice_pb2_grpc import (
+    DSMLPStorageControllerServiceStub,
+)
 
 
 class Client:
@@ -56,41 +58,47 @@ class Client:
         if not isinstance(config, ClientConfig):
             raise TypeError("'config' must be of type ClientConfig")
 
-    def get_personal_quota(self) -> str:
+    def get_workspace_home_quota(self) -> str:
         """Retrieve personal quota from DSMLPStorageController.
 
         Returns:
             The personal quota.
         """
         try:
-            get_personal_quota_request = GetPersonalQuotaRequest(
+            get_workspace_home_quota_request = GetWorkspaceHomeQuotaRequest(
                 uid=self.config.uid, workspaceName=self.config.workspace_name
             )
         except Exception:
-            print("failed to create GetPersonalQuotaRequest")
+            print("failed to create GetWorkspaceHomeQuotaRequest")
             raise
         try:
-            response = self.__stub.GetPersonalQuota(get_personal_quota_request)
+            response = self.__stub.GetWorkspaceHomeQuota(
+                get_workspace_home_quota_request
+            )
             return response
         except Exception:
             print("error occurred while processing request")
             raise
 
-    def set_personal_quota(self) -> str:
+    def set_workspace_home_quota(self) -> str:
         """Set personal quota in DSMLPStorageController.
 
         Returns:
             The personal quota.
         """
         try:
-            set_personal_quota_request = SetPersonalQuotaRequest(
-                uid=self.config.uid, userquota=self.config.userquota, workspaceName=self.config.workspace_name
+            set_workspace_home_quota_request = SetWorkspaceHomeQuotaRequest(
+                uid=self.config.uid,
+                userquota=self.config.userquota,
+                workspaceName=self.config.workspace_name,
             )
         except Exception:
-            print("failed to create SetPersonalQuotaRequest")
+            print("failed to create SetWorkspaceHomeQuotaRequest")
             raise
         try:
-            response = self.__stub.SetPersonalQuota(set_personal_quota_request)
+            response = self.__stub.SetWorkspaceHomeQuota(
+                set_workspace_home_quota_request
+            )
             return response
         except Exception:
             print("error occurred while processing request")
@@ -122,7 +130,7 @@ class Client:
             set_team_quota_request = SetTeamQuotaRequest(
                 gid=self.config.gid,
                 groupquota=self.config.groupquota,
-                workspaceName=self.config.workspace_name
+                workspaceName=self.config.workspace_name,
             )
         except Exception:
             print("failed to create SetTeamQuotaRequest")
@@ -134,35 +142,35 @@ class Client:
             print("error occurred while processing request")
             raise
 
-    def get_home_quota(self) -> str:
+    def get_personal_quota(self) -> str:
         """Retrieve home quota from DSMLPStorageController.
 
         Returns:
             The home quota.
         """
         try:
-            get_home_quota_request = GetHomeQuotaRequest(uid=self.config.uid)
+            get_personal_quota_request = GetPersonalQuotaRequest(uid=self.config.uid)
         except Exception:
-            print("failed to create GetHomeQuotaRequest")
+            print("failed to create GetPersonalQuotaRequest")
             raise
         try:
-            response = self.__stub.GetHomeQuota(get_home_quota_request)
+            response = self.__stub.GetPersonalQuota(get_personal_quota_request)
             return response
         except Exception:
             print("error occurred while processing request")
             raise
 
-    def set_home_quota(self):
+    def set_personal_quota(self):
         """Set home quota in DSMLPStorageController."""
         try:
-            set_home_quota_request = SetHomeQuotaRequest(
+            set_personal_quota_request = SetPersonalQuotaRequest(
                 uid=self.config.uid, userquota=self.config.userquota
             )
         except Exception:
-            print("failed to create SetHomeQuotaRequest")
+            print("failed to create SetPersonalQuotaRequest")
             raise
         try:
-            response = self.__stub.SetHomeQuota(set_home_quota_request)
+            response = self.__stub.SetPersonalQuota(set_personal_quota_request)
             return response
         except Exception:
             print("error occurred while processing request")
@@ -171,7 +179,9 @@ class Client:
     def create_workspace(self):
         """Create a workspace with the given name in DSMLPStorageController."""
         try:
-            create_workspace_request = CreateWorkspaceRequest(uid=self.config.uid, name=self.config.workspace_name)
+            create_workspace_request = CreateWorkspaceRequest(
+                uid=self.config.uid, name=self.config.workspace_name
+            )
         except Exception:
             print("failed to create CreateWorkspaceRequest")
             raise
