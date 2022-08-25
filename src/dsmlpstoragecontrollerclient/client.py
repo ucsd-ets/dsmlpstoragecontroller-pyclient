@@ -60,10 +60,10 @@ class Client:
             raise TypeError("'config' must be of type ClientConfig")
 
     def get_workspace_home_quota(self) -> str:
-        """Retrieve personal quota from DSMLPStorageController.
+        """Retrieve workspace home quota from DSMLPStorageController.
 
         Returns:
-            The personal quota.
+            The workspace home quota.
         """
         try:
             get_workspace_home_quota_request = GetWorkspaceHomeQuotaRequest(
@@ -82,10 +82,10 @@ class Client:
             raise
 
     def set_workspace_home_quota(self) -> str:
-        """Set personal quota in DSMLPStorageController.
+        """Set workspace home quota in DSMLPStorageController.
 
         Returns:
-            The personal quota.
+            The workspace home quota.
         """
         try:
             set_workspace_home_quota_request = SetWorkspaceHomeQuotaRequest(
@@ -144,10 +144,10 @@ class Client:
             raise
 
     def get_personal_quota(self) -> str:
-        """Retrieve home quota from DSMLPStorageController.
+        """Retrieve personal quota from DSMLPStorageController.
 
         Returns:
-            The home quota.
+            The personal quota.
         """
         try:
             get_personal_quota_request = GetPersonalQuotaRequest(uid=self.config.uid)
@@ -162,7 +162,7 @@ class Client:
             raise
 
     def set_personal_quota(self):
-        """Set home quota in DSMLPStorageController."""
+        """Set personal quota in DSMLPStorageController."""
         try:
             set_personal_quota_request = SetPersonalQuotaRequest(
                 uid=self.config.uid, userquota=self.config.userquota
