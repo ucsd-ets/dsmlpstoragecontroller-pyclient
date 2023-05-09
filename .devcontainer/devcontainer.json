@@ -6,10 +6,10 @@
 		"dockerfile": "Dockerfile",
 		"context": "..",
 		"args": {
-			// Update 'VARIANT' to pick a Python version: 3, 3.10, 3.9, 3.8, 3.7, 3.6
+			// Update 'VARIANT' to pick a Python version: 3, 3.11, 3.10, 3.9, 3.8, 3.7, 3.6
 			// Append -bullseye or -buster to pin to an OS version.
 			// Use -bullseye variants on local on arm64/Apple Silicon.
-			"VARIANT": "3.10-bullseye",
+			"VARIANT": "3.11-bullseye",
 			"TMP_PROTOS_PATH": "/tmp/protos"
 		}
 	},
@@ -22,7 +22,7 @@
 		"vscode": {
 			// Set *default* container specific settings.json values on container create.
 			"settings": {
-				"python.defaultInterpreterPath": "/opt/homebrew/opt/python@3.10/bin/python3",
+				"python.defaultInterpreterPath": "/opt/homebrew/opt/python@3.11/bin/python3",
 				"python.linting.enabled": true,
 				"python.linting.pylintEnabled": true
 			},

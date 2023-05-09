@@ -70,7 +70,7 @@ class Client:
                 uid=self.config.uid, workspaceName=self.config.workspace_name
             )
         except Exception:
-            print("failed to create GetWorkspaceHomeQuotaRequest")
+            print("failed to create GetWorkspaceHomeQuotaRequest for uid '{uid}' and workspace name '{workspace_name}'".format(uid=self.config.uid, workspace_name=self.config.workspace_name))
             raise
         try:
             response = self.__stub.GetWorkspaceHomeQuota(
@@ -78,7 +78,7 @@ class Client:
             )
             return response
         except Exception:
-            print("error occurred while processing request")
+            print("error occurred while processing request for uid '{uid}' and workspace name '{workspace_name}'".format(uid=self.config.uid, workspace_name=self.config.workspace_name))
             raise
 
     def set_workspace_home_quota(self) -> str:
@@ -94,7 +94,7 @@ class Client:
                 workspaceName=self.config.workspace_name,
             )
         except Exception:
-            print("failed to create SetWorkspaceHomeQuotaRequest")
+            print("failed to create SetWorkspaceHomeQuotaRequest for uid '{uid}', userquota '{userquota}', and workspace name '{workspace_name}".format(uid=self.config.uid, userquota=self.config.userquota, workspace_name=self.config.workspace_name))
             raise
         try:
             response = self.__stub.SetWorkspaceHomeQuota(
@@ -102,7 +102,7 @@ class Client:
             )
             return response
         except Exception:
-            print("error occurred while processing request")
+            print("error occurred while processing request for uid '{uid}', userquota '{userquota}', and workspace name '{workspace_name}".format(uid=self.config.uid, userquota=self.config.userquota, workspace_name=self.config.workspace_name))
             raise
 
     def get_team_quota(self) -> str:
@@ -116,13 +116,13 @@ class Client:
                 gid=self.config.gid, workspaceName=self.config.workspace_name
             )
         except Exception:
-            print("failed to create GetTeamQuotaRequest")
+            print("failed to create GetTeamQuotaRequest for gid '{gid}' and workspace name '{workspace_name}'".format(gid=self.config.gid, workspace_name=self.config.workspace_name))
             raise
         try:
             response = self.__stub.GetTeamQuota(get_team_quota_request)
             return response
         except Exception:
-            print("error occurred while processing request")
+            print("error occurred while processing request for gid '{gid}' and workspace name '{workspace_name}'".format(gid=self.config.gid, workspace_name=self.config.workspace_name))
             raise
 
     def set_team_quota(self):
@@ -134,13 +134,13 @@ class Client:
                 workspaceName=self.config.workspace_name,
             )
         except Exception:
-            print("failed to create SetTeamQuotaRequest")
+            print("failed to create SetTeamQuotaRequest for gid '{gid}', groupquota '{groupquota}', and workspace name '{workspace_name}'".format(gid=self.config.gid, groupquota=self.config.groupquota, workspace_name=self.config.workspace_name))
             raise
         try:
             response = self.__stub.SetTeamQuota(set_team_quota_request)
             return response
         except Exception:
-            print("error occurred while processing request")
+            print("error occurred while processing request for gid '{gid}', groupquota '{groupquota}', and workspace name '{workspace_name}'".format(gid=self.config.gid, groupquota=self.config.groupquota, workspace_name=self.config.workspace_name))
             raise
 
     def get_personal_quota(self) -> str:
@@ -152,13 +152,13 @@ class Client:
         try:
             get_personal_quota_request = GetPersonalQuotaRequest(uid=self.config.uid)
         except Exception:
-            print("failed to create GetPersonalQuotaRequest")
+            print("failed to create GetPersonalQuotaRequest for uid '{uid}'".format(uid=self.config.uid))
             raise
         try:
             response = self.__stub.GetPersonalQuota(get_personal_quota_request)
             return response
         except Exception:
-            print("error occurred while processing request")
+            print("error occurred while processing request for uid '{uid}'".format(uid=self.config.uid))
             raise
 
     def set_personal_quota(self):
@@ -168,13 +168,13 @@ class Client:
                 uid=self.config.uid, userquota=self.config.userquota
             )
         except Exception:
-            print("failed to create SetPersonalQuotaRequest")
+            print("failed to create SetPersonalQuotaRequest for uid '{uid}' and userquota '{userquota}'".format(uid=self.config.uid, userquota=self.config.userquota))
             raise
         try:
             response = self.__stub.SetPersonalQuota(set_personal_quota_request)
             return response
         except Exception:
-            print("error occurred while processing request")
+            print("error occurred while processing request for uid '{uid}' and userquota '{userquota}'".format(uid=self.config.uid, userquota=self.config.userquota))
             raise
 
     def create_workspace(self):
@@ -184,13 +184,13 @@ class Client:
                 uid=self.config.uid, name=self.config.workspace_name
             )
         except Exception:
-            print("failed to create CreateWorkspaceRequest")
+            print("failed to create CreateWorkspaceRequest for uid '{uid}' and workspace name '{workspace_name}'".format(uid=self.config.uid, workspace_name=self.config.workspace_name))
             raise
         try:
             response = self.__stub.CreateWorkspace(create_workspace_request)
             return response
         except Exception:
-            print("error occurred while processing request")
+            print("error occurred while processing request for uid '{uid}' and workspace name '{workspace_name}'".format(uid=self.config.uid, workspace_name=self.config.workspace_name))
             raise
 
     def create_home_directory(self):
@@ -200,13 +200,13 @@ class Client:
                 uid=self.config.uid, username=self.config.username
             )
         except Exception:
-            print("failed to create CreateHomeDirectoryRequest")
+            print("failed to create CreateHomeDirectoryRequest for uid '{uid}' and '{username}'".format(uid=self.config.uid, username=self.config.username))
             raise
         try:
             response = self.__stub.CreateHomeDirectory(create_home_directory_request)
             return response
         except Exception:
-            print("error occurred while processing request")
+            print("error occurred while processing request for uid '{uid}' and '{username}'".format(uid=self.config.uid, username=self.config.username))
             raise
 
     def get_list_of_home_directories(self) -> List[str]:
