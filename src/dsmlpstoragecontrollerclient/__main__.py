@@ -33,8 +33,8 @@ with Client(config) as client:
     if request_method == ClientRequestMethods.GetWorkspaceHomeQuota.value:
         config.uid = client_args_manager.get_uid()
         config.workspace_name = client_args_manager.get_workspace_name()
-        personal_quota = client.get_workspace_home_quota()
-        print(personal_quota)
+        workspace_home_quota = client.get_workspace_home_quota()
+        print(workspace_home_quota)
     elif request_method == ClientRequestMethods.SetWorkspaceHomeQuota.value:
         config.uid = client_args_manager.get_uid()
         config.userquota = client_args_manager.get_userquota()
@@ -52,8 +52,8 @@ with Client(config) as client:
         client.set_team_quota()
     elif request_method == ClientRequestMethods.GetPersonalQuota.value:
         config.uid = client_args_manager.get_uid()
-        home_quota = client.get_personal_quota()
-        print(home_quota)
+        personal_quota = client.get_personal_quota()
+        print(personal_quota)
     elif request_method == ClientRequestMethods.SetPersonalQuota.value:
         config.uid = client_args_manager.get_uid()
         config.userquota = client_args_manager.get_userquota()
