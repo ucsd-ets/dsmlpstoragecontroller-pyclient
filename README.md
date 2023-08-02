@@ -6,6 +6,10 @@ This repository is for the Python client of the <a href="https://github.com/ucsd
 
 **Minimum Python Version:** 3.11.0
 
+## Release Process
+1. Update the version in src/dsmlpstoragecontroller/\_\_init\_\_.py
+2. Push a tag following the semantic versioning format "v\*.\*.\*" (e.g. v1.2.3).
+
 ## Proto Files
 
 Proto file generation is automated in the Dev Container. If the proto file is compiled without the Dev Container, the import statements will need to be edited manually.
